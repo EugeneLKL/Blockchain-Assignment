@@ -45,18 +45,18 @@ header {
 
     0%,
     100% {
-        background-image: url(images/scene.jpg);
+        background-image: url(/images/scene.jpg);
     }
 
     25% {
-        background-image: url(images/scene2.jpg);
+        background-image: url(/images/scene2.jpg);
     }
 
     50% {
-        background-image: url(images/scene3.jpg);
+        background-image: url(/images/scene3.jpg);
     }
 
     75% {
-        background-image: url(images/scene4.jpg);
+        background-image: url(/images/scene4.jpg);
     }
 }
