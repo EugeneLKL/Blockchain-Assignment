@@ -1,0 +1,89 @@
+<!--This is the Home page for Project Dayak-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+    <script src="js/allFunction.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <title>Durian Tracker Application</title>
+    <!--Links this page to other stylesheets and "ico" file-->
+    <link rel="icon" href="images/durian-removebg-preview.ico">
+    <link rel="stylesheet" href="css/animated_header.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<!--A Background Image for Body-->
+
+<body style="background-image: url(images/BGIMG.jpg);">
+    <header>
+        <div class="shell">
+            <!--Title-->
+            <div class="navi">
+                <div class="logo"><img src="images/durian_Main.png" alt="Durian Logo" height="100"></a></div>
+                <div class="title">
+                    <h1>Durian Tracker Application</h1>
+                </div>
+                <!--Header text-->
+                <div class="titletext">
+                    <h1>Buy and Sell Durian through <span style="color:turquoise">Blockchain</span></h1>
+                    <h1></h1>
+                    <h2>Commerce made transparent, secure and efficient</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="index_box">
+                <br>
+                <button onclick="accessToMetamask()">access to metamask</button>
+                <p>Account number: <span id="accountArea"></span></p>
+                <br>
+                <button onclick="accessToContract()">access to contract</button>
+                <p>Account number: <span id="contractArea"></span></p>
+
+                <h1>Retailer</h1>
+                <div class="container">
+                    <div class="mini_box">
+                        <h2><u>Update Durian for Retailer</u></h2>
+                        <br>
+                        <h4>Durian Address:&nbsp;&nbsp;&nbsp;<span style="padding-left: 1px;"><input type="text"
+                                    id="durianAddress" placeholder="Enter Durian Address"></span>
+                        </h4>
+                        <br>
+                        <h4>Retailer Address:&nbsp;&nbsp;<span><input type="text" id="retailerAddress"
+                                    placeholder="Enter Retailer Address"></span></h4>
+                        <br>
+                        <h4>Date Received From Distribution Center:&nbsp;&nbsp;<span><input type="text"
+                                    id="dateReceivedFromDistributionCenter"
+                                    placeholder="Enter Date Received From Distribution Center"></span></h4>
+                        <br>
+                        <button onclick="updateDurianInfoForRetailer()">Update Durian</button>
+                    </div>
+                    <div class="mini_box">
+                        <h2><u>Update Retailer Information</u></h2>
+                        <br>
+                        <h4>Retailer Address:&nbsp;&nbsp;&nbsp;<span style="padding-left: 1px;"><input type="text"
+                                    id="durianAddress" placeholder="Enter Retailer Address"></span>
+                        </h4>
+                        <br>
+                        <h4>Location:&nbsp;&nbsp;<span><input type="text" id="retailerAddress"
+                                    placeholder="Enter Location"></span></h4>
+                        <br>
+                        <h4>Operating Years:&nbsp;&nbsp;<span><input type="text" id="operatingYears"
+                                    placeholder="Enter Operating Years"></span></h4>
+                        <br>
+                        <button onclick="updateRetailerInfo()">Update Retailer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

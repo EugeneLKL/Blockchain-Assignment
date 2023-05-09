@@ -1,0 +1,79 @@
+<!--This is the Home page for Project Dayak-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <title>Durian Tracker Application</title>
+    <!--Links this page to other stylesheets and "ico" file-->
+    <link rel="icon" href="/Website/images/durian-removebg-preview.ico">
+    <link rel="stylesheet" href="/Website/css/animated_header.css">
+    <link rel="stylesheet" href="/Website/css/navigation.css">
+    <link rel="stylesheet" href="/Website/css/main.css">
+
+</head>
+<!--A Background Image for Body-->
+
+<body style="background-image: url(/Website/images/BGIMG.jpg);">
+    <header>
+        <div class="shell">
+            <!--Title-->
+            <div class="navi">
+                <div class="logo"><img src="/Website/images/durian_Main.png" alt="Durian Logo" height="100"></a></div>
+                <div class="title">
+                    <h1>Durian Tracker Application</h1>
+                </div>
+                <!--Header text-->
+                <div class="titletext">
+                    <h1>Buy and Sell Durian through <span style="color:turquoise">Blockchain</span></h1>
+                    <h1></h1>
+                    <h2>Commerce made transparent, secure and efficient</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="index_box">
+                <br>
+                <h2><a onclick="accessToMetamask()"><img src="/Website/images/button_connectMetaMask.png"
+                            alt="Connect to MetaMask Button" width="180"></a></h2>
+                <p>Account number: <span id="accountArea"></span></p>
+
+                <h1>What are you trying to be?</h1>
+                <div class="index_farmer">
+                    <h2><a href="farmer.html"><img src="/Website/images/button_farmer.png" alt="Farmer Button"
+                                width="130"></a></h2>
+                </div>
+                <div class="index_distributor">
+                    <h2><a href="distributor.html"><img src="/Website/images/button_distributor.png"
+                                alt="Distributor Button" width="130"></a></h2>
+                </div>
+                <div class="index_retailer">
+                    <h2><a href="retailer.html"><img src="/Website/images/button_retailer.png" alt="Retailer Button"
+                                width="130"></a></h2>
+                </div>
+                <div class="index_consumer">
+                    <h2><a href="consumer.html"><img src="/Website/images/button_consumer.png" alt="Consumer Button"
+                                width="130"></a></h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        //1- Connect to metamask
+        let account;
+
+        const accessToMetamask = async () => {
+            if (window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+                account = accounts[0];
+                document.getElementById("accountArea").innerHTML = account;
+            }
+        }
+    </script>
+</body>
+
+</html>

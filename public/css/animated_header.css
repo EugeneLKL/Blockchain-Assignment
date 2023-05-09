@@ -1,0 +1,62 @@
+/* The design and effects of the header */
+header {
+    height: 700px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    animation: animeheader 30s ease-in-out infinite;
+    background-size: cover;
+    border-bottom: 3px solid black;
+}
+
+/* The shell above the background image */
+.shell {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Position of text in header */
+.titletext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Colour and font size of text in header */
+.titletext {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.titletext>h2 {
+    font-size: large;
+}
+
+/* The rotation of background image in header */
+@keyframes animeheader {
+
+    0%,
+    100% {
+        background-image: url(images/scene.jpg);
+    }
+
+    25% {
+        background-image: url(images/scene2.jpg);
+    }
+
+    50% {
+        background-image: url(images/scene3.jpg);
+    }
+
+    75% {
+        background-image: url(images/scene4.jpg);
+    }
+}
