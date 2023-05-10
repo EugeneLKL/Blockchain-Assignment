@@ -1,299 +1,297 @@
 @font-face {
-    font-family: Forum;
-    src: url(/fonts/Forum-Regular.ttf);
+  font-family: Forum;
+  src: url(/fonts/Forum-Regular.ttf);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Universal selector */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: Forum;
+  margin: 0;
+  padding: 0;
+  font-family: Forum;
 }
 
 .container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 960px;
-    min-width: 650px;
-    padding-top: 10px;
-    position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 650px;
+  padding-top: 10px;
+  position: relative;
 }
 
 .functionContainer {
-    width: 50%;
-    color: #000000;
-    margin: 30px auto;
-    max-width: 960px;
-    min-width: 650px;
-    padding: 10px;
-    background-color: peachpuff;
-    border: 1px solid black;
-    border-radius: 15px;
-    position: relative;
+  width: 50%;
+  color: #000000;
+  margin: 30px auto;
+  max-width: 960px;
+  min-width: 650px;
+  padding: 10px;
+  background-color: peachpuff;
+  border: 1px solid black;
+  border-radius: 15px;
+  position: relative;
 }
 
-.functionContainer>h1 {
-    text-align: center;
-    font-size: 35px;
+.functionContainer > h1 {
+  text-align: center;
+  font-size: 35px;
 }
 
-.functionContainer>h2 {
-    text-align: left;
-    font-size: 20px;
+.functionContainer > h2 {
+  text-align: left;
+  font-size: 20px;
 }
 
 .index_box {
-    width: 100%;
-    margin: 30px 0;
-    background-color: white;
-    background-position: center;
-    border: 1px solid black;
-    border-radius: 30px;
+  width: 100%;
+  margin: 30px 0;
+  background-color: white;
+  background-position: center;
+  border: 1px solid black;
+  border-radius: 30px;
 }
 
-.index_box>h1 {
-    text-align: center;
-    padding: 20px 0px;
-    color: rgb(0, 0, 0);
+.index_box > h1 {
+  text-align: center;
+  padding: 20px 0px;
+  color: rgb(0, 0, 0);
 }
 
-.index_box>h2 {
-    text-align: center;
-    padding: 10px 10px;
-    color: rgb(0, 0, 0);
+.index_box > h2 {
+  text-align: center;
+  padding: 10px 10px;
+  color: rgb(0, 0, 0);
 }
 
-.index_box>button {
-    text-align: center;
-    padding: 20px 0px;
-    color: rgb(0, 0, 0);
+.index_box > button {
+  text-align: center;
+  padding: 20px 0px;
+  color: rgb(0, 0, 0);
 }
 
-.index_box>p {
-    text-align: center;
+.index_box > p {
+  text-align: center;
 }
 
 .index_farmer {
-    margin: 20px 20px 20px 35px;
-    padding: 100px 0px;
-    width: 44%;
-    float: left;
-    background-image: url(/images/durianFarmer.jpg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+  margin: 20px 20px 20px 35px;
+  padding: 100px 0px;
+  width: 44%;
+  float: left;
+  background-image: url(/images/durianFarmer.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
-
 .index_distributor {
-    margin: 20px 20px 20px 20px;
-    padding: 100px 0px;
-    width: 44%;
-    float: left;
-    background-image: url(/images/durianDistributor.jpg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+  margin: 20px 20px 20px 20px;
+  padding: 100px 0px;
+  width: 44%;
+  float: left;
+  background-image: url(/images/durianDistributor.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .index_retailer {
-    margin: 20px 20px 20px 35px;
-    padding: 100px 0px;
-    width: 44%;
-    float: left;
-    background-image: url(/images/durianRetailer.jpg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+  margin: 20px 20px 20px 35px;
+  padding: 100px 0px;
+  width: 44%;
+  float: left;
+  background-image: url(/images/durianRetailer.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .index_consumer {
-    margin: 20px 20px 20px 20px;
-    padding: 100px 0px;
-    width: 44%;
-    float: left;
-    background-image: url(/images/durianConsumer.jpg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+  margin: 20px 20px 20px 20px;
+  padding: 100px 0px;
+  width: 44%;
+  float: left;
+  background-image: url(/images/durianConsumer.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .index_admin {
-    margin: 20px 20px 20px 20px;
-    padding: 100px 0px;
-    width: 44%;
-    float: left;
-    background-image: url(/images/durianConsumer.jpg);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+  margin: 20px 20px 20px 20px;
+  padding: 100px 0px;
+  width: 44%;
+  float: left;
+  background-image: url(/images/durianConsumer.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .mini_box {
-    width: 55%;
-    background-color: white;
-    background-position: center;
-    border: 1px solid black;
-    border-radius: 30px;
-    padding: 10px 20px;
-    margin: auto;
+  width: 55%;
+  background-color: white;
+  background-position: center;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin: auto;
 }
 
 .login_box {
-    width: 90%;
-    background-color: white;
-    background-position: center;
-    border: 1px solid black;
-    border-radius: 30px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    font-size: 20px;
-    color: #000;
-    margin: auto;
+  width: 90%;
+  background-color: white;
+  background-position: center;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #000;
+  margin: auto;
 }
 
 /* Buttons */
 .disconnectButton {
-    cursor: pointer;
-    display: inline-block;
-    background: #ff7070;
-    border-radius: 20px;
-    padding: 5px 20px 5px 20px;
-    color: #ffffff;
-    font-size: 20px;
-    border: none;
-    margin: 0 auto;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-
+  cursor: pointer;
+  display: inline-block;
+  background: #ff7070;
+  border-radius: 20px;
+  padding: 5px 20px 5px 20px;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }
 
 .disconnectButton:hover {
-    background-color: #ff5858;
+  background-color: #ff5858;
 }
 
 .disconnectButton:active {
-    background-color: #ff3f3f;
+  background-color: #ff3f3f;
 }
 
 .button {
-    cursor: pointer;
-    display: inline-block;
-    background: #a0e698;
-    border-radius: 20px;
-    padding: 5px 20px 5px 20px;
-    color: #ffffff;
-    font-size: 20px;
-    border: none;
+  cursor: pointer;
+  display: inline-block;
+  background: #a0e698;
+  border-radius: 20px;
+  padding: 5px 20px 5px 20px;
+  color: #ffffff;
+  font-size: 20px;
+  border: none;
 }
 
 .button:hover {
-    background-color: #80cc7a;
+  background-color: #80cc7a;
 }
 
 .button:active {
-    background-color: #5aae51;
+  background-color: #5aae51;
 }
 
 /* Table formatting */
 .tableInput {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .inputBox {
-    padding: 5px;
+  padding: 5px;
 }
 
 /* Snackbar */
 #snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
 }
 
 #snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 @-webkit-keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
 
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-    from {
-        bottom: 0;
-        opacity: 0;
-    }
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
 
-    to {
-        bottom: 30px;
-        opacity: 1;
-    }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
 
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-    from {
-        bottom: 30px;
-        opacity: 1;
-    }
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
 
-    to {
-        bottom: 0;
-        opacity: 0;
-    }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

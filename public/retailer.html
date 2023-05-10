@@ -1,133 +1,207 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
+    ></script>
     <script src="js/allFunction.js"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
     <title>Durian Tracker Application</title>
     <!--Links this page to other stylesheets and "ico" file-->
-    <link rel="icon" href="/images/durian-removebg-preview.ico">
-    <link rel="stylesheet" href="/css/animated_header.css">
-    <link rel="stylesheet" href="/css/navigation.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" href="/images/durian-removebg-preview.ico" />
+    <link rel="stylesheet" href="/css/animated_header.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <!--A Background Image for Body-->
 
-</head>
-<!--A Background Image for Body-->
-
-<body style="background-image: url(images/BGIMG.jpg);">
+  <body style="background-image: url(images/BGIMG.jpg)">
     <header>
-        <div class="shell">
-            <!--Title-->
-            <div class="navi">
-                <div class="logo"><img src="images/durian_Main.png" alt="Durian Logo" height="100"></a></div>
-                <div class="title">
-                    <h1>Durian Tracker Application</h1>
-                </div>
-                <!--Header text-->
-                <div class="titletext">
-                    <h1>
-                        Tracing Durian through
-                        <span style="color: turquoise">Blockchain</span>
-                    </h1>
-                    <h2>Secure and transparent tracking of data and transactions</h2>
-                </div>
-            </div>
+      <div class="shell">
+        <!--Title-->
+        <div class="navi">
+          <div class="logo">
+            <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
+          </div>
+          <div class="title">
+            <h1>Durian Tracker Application</h1>
+          </div>
+          <!--Header text-->
+          <div class="titletext">
+            <h1>
+              Tracing Durian through
+              <span style="color: turquoise">Blockchain</span>
+            </h1>
+            <h2>Secure and transparent tracking of data and transactions</h2>
+          </div>
         </div>
+      </div>
     </header>
     <main>
-        <div class="container">
-            <div class="index_box">
-                <br>
+      <div class="container">
+        <div class="index_box">
+          <br />
 
-                <h1>Retailer</h1>
-                <div class="container">
-                    <div style="margin-top: 15px;" class="mini_box">
-                        <h2><u>Update Durian for Retailer</u></h2>
-                        <br>
-                        <table>
-                            <tr>
-                                <td>Durian Address:</td>
-                                <td class="tableInput"><input type="text" id="updateDurianDurianAddress"
-                                        placeholder="Enter Durian Address" class="inputBox" size="44"></td>
-                            </tr>
-                            <tr>
-                                <td>Retailer Address:</td>
-                                <td class="tableInput"><input type="text" id="updateDurianRetailerAddress" disabled
-                                        class="inputBox" size="44"></td>
-                            </tr>
-                            <tr>
-                                <td>Date Received From Distribution Center:</td>
-                                <td class="tableInput"><input type="text"
-                                        id="updateDurianDateReceivedFromDistributionCenter"
-                                        placeholder="Enter Date Received From Distribution Center" class="inputBox"
-                                        size="44"></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <button onclick="updateDurianInfoForRetailer(); snackbar();" class="button">Update
-                            Durian</button>
-                    </div>
-                    <div style="margin-top: 15px;" class="mini_box">
-                        <h2><u>Update Retailer Information</u></h2>
-                        <br>
-                        <table>
-                            <tr>
-                                <td>Retailer Address:</td>
-                                <td class="tableInput"><input type="text" id="updateRetailerRetailerAddress" disabled
-                                        class="inputBox" size="44"></td>
-                            </tr>
-                            <tr>
-                                <td>Location:</td>
-                                <td class="tableInput"><input type="text" id="updateRetailerLocation"
-                                        placeholder="Enter Location" class="inputBox" size="44"></td>
-                            </tr>
-                            <tr>
-                                <td>Operating Years:</td>
-                                <td class="tableInput"><input type="text" id="updateRetailerOperatingYears"
-                                        placeholder="Enter Operating Years" class="inputBox" size="44"></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <button onclick="updateRetailerInfo(); snackbar();" class="button">Update Retailer</button>
-                    </div>
-                    <div style="margin-top: 15px; margin-bottom: 15px;" class="mini_box">
-                        <h2><u>Update Date Pass To Consumer</u></h2>
-                        <br>
-                        <table>
-                            <tr>
-                                <td>Durian Address:</td>
-                                <td class="tableInput"><input type="text" id="updateDateDurianAddress"
-                                        placeholder="Enter Durian Address" class="inputBox" size="44"></td>
-                            </tr>
-                            <tr>
-                                <td>Date Pass to Consumer:</td>
-                                <td class="tableInput"><input type="text" id="updateDateDatePassToConsumer"
-                                        placeholder="Enter Date Pass to Consumer" class="inputBox" size="44"></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <button onclick="updateDatePassToConsumer(); snackbar();" class="button">Update Date</button>
-                    </div>
-                </div>
-                <button class="disconnectButton" onclick="disconnect()">Disconnect</button>
+          <h1>Retailer</h1>
+          <div class="container">
+            <div style="margin-top: 15px" class="mini_box">
+              <h2><u>Update Durian for Retailer</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Durian Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDurianDurianAddress"
+                      placeholder="Enter Durian Address"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Retailer Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDurianRetailerAddress"
+                      disabled
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date Received From Distribution Center:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDurianDateReceivedFromDistributionCenter"
+                      placeholder="Enter Date Received From Distribution Center"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <br />
+              <button
+                onclick="updateDurianInfoForRetailer(); snackbar();"
+                class="button"
+              >
+                Update Durian
+              </button>
             </div>
-            <div id="snackbar">Changes made successfully</div>
+            <div style="margin-top: 15px" class="mini_box">
+              <h2><u>Update Retailer Information</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Retailer Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateRetailerRetailerAddress"
+                      disabled
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Location:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateRetailerLocation"
+                      placeholder="Enter Location"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Operating Years:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateRetailerOperatingYears"
+                      placeholder="Enter Operating Years"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <br />
+              <button
+                onclick="updateRetailerInfo(); snackbar();"
+                class="button"
+              >
+                Update Retailer
+              </button>
+            </div>
+            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+              <h2><u>Update Date Pass To Consumer</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Durian Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDateDurianAddress"
+                      placeholder="Enter Durian Address"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date Pass to Consumer:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDateDatePassToConsumer"
+                      placeholder="Enter Date Pass to Consumer"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <br />
+              <button
+                onclick="updateDatePassToConsumer(); snackbar();"
+                class="button"
+              >
+                Update Date
+              </button>
+            </div>
+          </div>
+          <button class="disconnectButton" onclick="disconnect()">
+            Disconnect
+          </button>
+        </div>
+        <div id="snackbar">Changes made successfully</div>
+      </div>
     </main>
-
-</body>
-<script>
+  </body>
+  <script>
     window.addEventListener('load', async () => {
-        await accessToMetamask();
-        await accessToContract();
+      await accessToMetamask();
+      await accessToContract();
 
-        const currentUser = window.ethereum.selectedAddress;
-        document.getElementById("updateDurianRetailerAddress").value = currentUser;
-        document.getElementById("updateRetailerRetailerAddress").value = currentUser;
+      const currentUser = window.ethereum.selectedAddress;
+      document.getElementById('updateDurianRetailerAddress').value =
+        currentUser;
+      document.getElementById('updateRetailerRetailerAddress').value =
+        currentUser;
     });
-</script>
-
+  </script>
 </html>
