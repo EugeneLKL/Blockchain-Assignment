@@ -48,19 +48,19 @@ contract DurianTracing {
         int harvestDate;
         int harvestTime;
         int datePassToDistributionCenter;
-				address distributionCenterAddress;
+        uint distributionCenterID;
     }
 
     struct DurianDistributionCenter {
         int dateReceivedFromFarm;
         int datePassToRetailer;
-				address retailerAddress;
+        address retailerAddress;
     }
 
     struct DurianRetailer {
         int dateReceivedFromDistributionCenter;
         int datePassToConsumer;
-				address consumerAddress;
+        address consumerAddress;
     }
 
     struct DurianConsumer {
@@ -96,7 +96,7 @@ contract DurianTracing {
     }
 
     struct DistributionCenter {
-        address distributionCenterAddress;
+        uint distributionCenterID;
         address distributionCenterOwner;
         string distributionCenterName;
         string distributionCenterLocation;
@@ -127,30 +127,30 @@ contract DurianTracing {
 
     mapping(address => bool) public admins;
     mapping(address => uint) public farmers; // mapping(farmerAddress => farmID)
-    mapping(address => address) public distributors; // mapping(distributionCenterAddress => distributorAddress)
+    mapping(address => uint) public distributors; // mapping(distributorAddress => distributionCenterID)
 
     uint public treesCount;
     mapping(string => Tree) public trees; // mapping(treeId => tree)
 
     uint public duriansCount;
     mapping(address => Durian) public durians; // mapping(durianAddress => durian)
-		address[] durianAddresses;
+    address[] durianAddresses;
 
     uint public farmsCount;
     mapping(uint => Farm) public farms; // mapping(farmID => farm)
-		uint[] farmAddresses;
+    uint[] farmAddresses;
 
     uint public distributionCentersCount;
-    mapping(address => DistributionCenter) public distributionCenters; // mapping(distributionCenterAddress => distributionCenter)
-		address[] distributionCenterAddresses;
+    mapping(uint => DistributionCenter) public distributionCenters; // mapping(distributionCenterID => distributionCenter)
+    uint[] distributionCenterIDs;
 
     uint public retailersCount;
     mapping(address => Retailer) public retailers; // mapping(retailerAddress => retailer)
-		address[] retailerAddresses;
+    address[] retailerAddresses;
 
     uint public consumersCount;
     mapping(address => Consumer) public consumers; // mapping(consumerAddress => consumer)
-		address[] consumerAddresses;
+    address[] consumerAddresses;
 
     // ----------------------------------------------------
     // |                     Variable                     |
@@ -201,8 +201,7 @@ contract DurianTracing {
     // OnlyBy modifier for distributors
     modifier onlyDistributor() {
         require(
-            distributors[msg.sender] !=
-                0x0000000000000000000000000000000000000000,
+            users[msg.sender].userRole == Roles.Distributor,
             "Only distributor can call this function"
         );
         _;
@@ -238,10 +237,10 @@ contract DurianTracing {
     }
 
     // OnlyBy modifier for distribution center owners
-    modifier onlyDistributionCentreOwner(address _distributionCenterAddress) {
+    modifier onlyDistributionCentreOwner(uint _distributionCenterID) {
         require(
             msg.sender ==
-                distributionCenters[_distributionCenterAddress]
+                distributionCenters[_distributionCenterID]
                     .distributionCenterOwner,
             "Only the owner of the distribution centre can perform this action."
         );
@@ -292,7 +291,7 @@ contract DurianTracing {
         usersCount++;
         consumers[msg.sender] = consumer;
         consumersCount++;
-				consumerAddresses.push(msg.sender);
+        consumerAddresses.push(msg.sender);
     }
 
     // Get user
@@ -319,7 +318,7 @@ contract DurianTracing {
                 lastPassingDate: 0
             });
             retailersCount++;
-						retailerAddresses.push(_userAddress);
+            retailerAddresses.push(_userAddress);
         }
     }
 
@@ -352,7 +351,7 @@ contract DurianTracing {
     // Check distributor belongs to which distribution center
     function getDistributorDistributionCenter(
         address _distributorAddress
-    ) external view returns (address) {
+    ) external view returns (uint) {
         return distributors[_distributorAddress];
     }
 
@@ -378,7 +377,7 @@ contract DurianTracing {
             harvestDate: _harvestDate,
             harvestTime: _harvestTime,
             datePassToDistributionCenter: 0,
-						distributionCenterAddress: address(0)
+            distributionCenterID: 0
         });
 
         Durian memory durian = Durian({
@@ -388,12 +387,12 @@ contract DurianTracing {
             durianDistributionCenter: DurianDistributionCenter({
                 dateReceivedFromFarm: 0,
                 datePassToRetailer: 0,
-								retailerAddress: address(0)
+                retailerAddress: address(0)
             }),
             durianRetailer: DurianRetailer({
                 dateReceivedFromDistributionCenter: 0,
                 datePassToConsumer: 0,
-								consumerAddress: address(0)
+                consumerAddress: address(0)
             }),
             durianConsumer: DurianConsumer({
                 dateReceivedFromRetailer: 0,
@@ -412,20 +411,20 @@ contract DurianTracing {
         // Add durian to mapping
         durians[durian.durianAddress] = durian;
         duriansCount++;
-				durianAddresses.push(durian.durianAddress);
+        durianAddresses.push(durian.durianAddress);
     }
 
     // Update date pass to distribution center
     function updateDatePassToDistributionCenter(
         address _durianAddress,
         int _datePassToDistributionCenter,
-				address _distributionCenterAddress
+        uint _distributionCenterID
     ) external view onlyFarmer {
         Durian memory durian = durians[_durianAddress];
         durian
             .durianFarm
             .datePassToDistributionCenter = _datePassToDistributionCenter;
-				durian.durianFarm.distributionCenterAddress = _distributionCenterAddress;
+        durian.durianFarm.distributionCenterID = _distributionCenterID;
     }
 
     // Update durian information for distributor
@@ -443,13 +442,13 @@ contract DurianTracing {
     function updateDatePassToRetailer(
         address _durianAddress,
         int _datePassToRetailer,
-				address _retailerAddress
+        address _retailerAddress
     ) external view onlyDistributor {
         Durian memory durian = durians[_durianAddress];
         durian
             .durianDistributionCenter
             .datePassToRetailer = _datePassToRetailer;
-				durian.durianDistributionCenter.retailerAddress = _retailerAddress;
+        durian.durianDistributionCenter.retailerAddress = _retailerAddress;
     }
 
     // Update durian information for retailer
@@ -467,11 +466,11 @@ contract DurianTracing {
     function updateDatePassToConsumer(
         address _durianAddress,
         int _datePassToConsumer,
-				address _consumerAddress
+        address _consumerAddress
     ) external view onlyRetailer {
         Durian memory durian = durians[_durianAddress];
         durian.durianRetailer.datePassToConsumer = _datePassToConsumer;
-				durian.durianRetailer.consumerAddress = _consumerAddress;
+        durian.durianRetailer.consumerAddress = _consumerAddress;
     }
 
     // Update durian information for consumer
@@ -524,7 +523,7 @@ contract DurianTracing {
         string memory _location
     ) external onlyAdmin {
         Farm memory farm = Farm({
-						farmID: farmsCount + 1,
+            farmID: farmsCount + 1,
             farmOwner: _owner,
             farmName: _name,
             farmLocation: _location,
@@ -537,16 +536,14 @@ contract DurianTracing {
         // Add farm to mapping
         farms[farm.farmID] = farm;
         farmsCount++;
-				farmAddresses.push(farm.farmID);
+        farmAddresses.push(farm.farmID);
 
         // Add owner to farmer list
         farmers[_owner] = farm.farmID;
     }
 
     // Get farm owner
-    function getFarmOwner(
-        uint _farmID
-    ) external view returns (address) {
+    function getFarmOwner(uint _farmID) external view returns (address) {
         return farms[_farmID].farmOwner;
     }
 
@@ -633,7 +630,7 @@ contract DurianTracing {
         string memory _location
     ) external onlyAdmin {
         DistributionCenter memory distributionCenter = DistributionCenter({
-            distributionCenterAddress: address(this),
+            distributionCenterID: distributionCentersCount + 1,
             distributionCenterOwner: _owner,
             distributionCenterName: _name,
             distributionCenterLocation: _location,
@@ -644,38 +641,37 @@ contract DurianTracing {
 
         // Add distribution center to mapping
         distributionCenters[
-            distributionCenter.distributionCenterAddress
+            distributionCenter.distributionCenterID
         ] = distributionCenter;
         distributionCentersCount++;
-				distributionCenterAddresses.push(distributionCenter.distributionCenterAddress);
+        distributionCenterIDs.push(distributionCenter.distributionCenterID);
 
         // Add owner to distributor list
-        distributors[_owner] = distributionCenter.distributionCenterAddress;
+        distributors[_owner] = distributionCenter.distributionCenterID;
     }
 
     // Get distribution center owner
     function getDistributionCenterOwner(
-        address _distributionCenterAddress
+        uint _distributionCenterID
     ) external view returns (address) {
         return
-            distributionCenters[_distributionCenterAddress]
-                .distributionCenterOwner;
+            distributionCenters[_distributionCenterID].distributionCenterOwner;
     }
 
     // Add distributor to distribution center
     function addDistributorToDistributionCenter(
-        address _distributionCenterAddress,
+        uint _distributionCenterID,
         address _userAddress
-    ) external onlyDistributionCentreOwner(_distributionCenterAddress) {
-        distributionCenters[_distributionCenterAddress].distributors.push(
+    ) external onlyDistributionCentreOwner(_distributionCenterID) {
+        distributionCenters[_distributionCenterID].distributors.push(
             _userAddress
         );
-        distributors[_userAddress] = _distributionCenterAddress;
+        distributors[_userAddress] = _distributionCenterID;
     }
 
     // // Get distribution center information
     // function getDistributionCenterInfo(
-    //     address _distributionCenterAddress
+    //     address _distributionCenterID
     // )
     //     external
     //     view
@@ -691,10 +687,10 @@ contract DurianTracing {
     //     )
     // {
     //     DistributionCenter memory distributionCenter = distributionCenters[
-    //         _distributionCenterAddress
+    //         _distributionCenterID
     //     ];
     //     return (
-    //         distributionCenter.distributionCenterAddress,
+    //         distributionCenter.distributionCenterID,
     //         distributionCenter.distributionCenterOwner,
     //         distributionCenter.distributionCenterName,
     //         distributionCenter.distributionCenterLocation,
@@ -704,15 +700,15 @@ contract DurianTracing {
     //     );
     // }
 
-		// Get all distribution center addresses
-		function getDistributionCenterAddresses() external view returns (address[] memory) {
-			return distributionCenterAddresses;
-			// DistributionCenter[] memory distributionCenter = new DistributionCenter[](distributionCenterAddresses.length);
-			// for (uint i = 0; i < distributionCenterAddresses.length; i++) {
-			// 	distributionCenter[i] = distributionCenters[distributionCenterAddresses[i]];
-			// }
-			// return (distributionCenter);
-		}
+    // Get all distribution center IDs
+    function getDistributionCenterIDs() external view returns (uint[] memory) {
+        return distributionCenterIDs;
+        // DistributionCenter[] memory distributionCenter = new DistributionCenter[](distributionCenterIDes.length);
+        // for (uint i = 0; i < distributionCenterIDes.length; i++) {
+        // 	distributionCenter[i] = distributionCenters[distributionCenterIDes[i]];
+        // }
+        // return (distributionCenter);
+    }
 
     // -------------------------------------------------------------
     // |                     Retailer function                     |

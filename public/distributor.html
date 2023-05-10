@@ -1,207 +1,160 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
-    ></script>
-    <script src="js/allFunction.js"></script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
-    <title>Durian Tracker Application</title>
-    <!--Links this page to other stylesheets and "ico" file-->
-    <link rel="icon" href="/images/durian-removebg-preview.ico" />
-    <link rel="stylesheet" href="/css/animated_header.css" />
-    <link rel="stylesheet" href="/css/navigation.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-  </head>
-  <!--A Background Image for Body-->
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+  <script src="js/allFunction.js"></script>
 
-  <body style="background-image: url(images/BGIMG.jpg)">
-    <header>
-      <div class="shell">
-        <!--Title-->
-        <div class="navi">
-          <div class="logo">
-            <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
-          </div>
-          <div class="title">
-            <h1>Durian Tracker Application</h1>
-          </div>
-          <!--Header text-->
-          <div class="titletext">
-            <h1>
-              Tracing Durian through
-              <span style="color: turquoise">Blockchain</span>
-            </h1>
-            <h2>Secure and transparent tracking of data and transactions</h2>
-          </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+  <title>Durian Tracker Application</title>
+  <!--Links this page to other stylesheets and "ico" file-->
+  <link rel="icon" href="/images/durian-removebg-preview.ico" />
+  <link rel="stylesheet" href="/css/animated_header.css" />
+  <link rel="stylesheet" href="/css/navigation.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<!--A Background Image for Body-->
+
+<body style="background-image: url(images/BGIMG.jpg)">
+  <header>
+    <div class="shell">
+      <!--Title-->
+      <div class="navi">
+        <div class="logo">
+          <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
+        </div>
+        <div class="title">
+          <h1>Durian Tracker Application</h1>
+        </div>
+        <!--Header text-->
+        <div class="titletext">
+          <h1>
+            Tracing Durian through
+            <span style="color: turquoise">Blockchain</span>
+          </h1>
+          <h2>Secure and transparent tracking of data and transactions</h2>
         </div>
       </div>
-    </header>
-    <main>
-      <div class="container">
-        <div class="index_box">
-          <br />
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="index_box">
+        <br />
 
-          <h1>Distribution Center</h1>
-          <div class="container">
-            <div class="mini_box" id="addDistributorDiv">
-              <h2><u>Add Distributor</u></h2>
-              <br />
-              <table>
-                <tr>
-                  <td>Distribution Center Address:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="addDistributorDistributionCenterAddress"
-                      disabled
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>User Address:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="addDistributorUserAddress"
-                      placeholder="Enter User Address"
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-              </table>
-              <br />
-              <button
-                onclick="addDistributorToDistributionCenter(); snackbar();"
-                class="button"
-              >
-                Add Distributor
-              </button>
-            </div>
-            <div style="margin-top: 15px" class="mini_box">
-              <h2><u>Update Durian for Distributor</u></h2>
-              <br />
-              <table>
-                <tr>
-                  <td>Durian Address:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDurianDurianAddress"
-                      placeholder="Enter Durian Address"
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Distribution Center Address:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDurianDistributionCenterAddress"
-                      disabled
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Date Received From Farm:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDurianDateReceivedFromFarm"
-                      placeholder="Enter Date Received From Farm"
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-              </table>
-              <br />
-              <button
-                onclick="updateDurianInfoForDistributor(); snackbar();"
-                class="button"
-              >
-                Update Durian
-              </button>
-            </div>
-            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
-              <h2><u>Update Date Pass to Retailer</u></h2>
-              <br />
-              <table>
-                <tr>
-                  <td>Durian Address:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDateDurianAddress"
-                      placeholder="Enter Durian Address"
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Date Pass to Retailer:</td>
-                  <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDateDatePassToRetailer"
-                      placeholder="Enter Date Pass to Retailer"
-                      class="inputBox"
-                      size="44"
-                    />
-                  </td>
-                </tr>
-              </table>
-              <br />
-              <button
-                onclick="updateDatePassToRetailer(); snackbar();"
-                class="button"
-              >
-                Update Date
-              </button>
-            </div>
+        <h1>Distribution Center</h1>
+        <div class="container">
+          <div class="mini_box" id="addDistributorDiv">
+            <h2><u>Add Distributor</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Distribution Center Address:</td>
+                <td class="tableInput">
+                  <input type="text" id="addDistributorDistributionCenterID" disabled class="inputBox" size="44" />
+                </td>
+              </tr>
+              <tr>
+                <td>User Address:</td>
+                <td class="tableInput">
+                  <input type="text" id="addDistributorUserAddress" placeholder="Enter User Address" class="inputBox"
+                    size="44" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button onclick="addDistributorToDistributionCenter(); snackbar();" class="button">
+              Add Distributor
+            </button>
           </div>
-          <button class="disconnectButton" onclick="disconnect()">
-            Disconnect
-          </button>
+          <div style="margin-top: 15px" class="mini_box">
+            <h2><u>Update Durian for Distributor</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Durian Address:</td>
+                <td class="tableInput">
+                  <input type="text" id="updateDurianDurianAddress" placeholder="Enter Durian Address" class="inputBox"
+                    size="44" />
+                </td>
+              </tr>
+              <tr>
+                <td>Distribution Center ID:</td>
+                <td class="tableInput">
+                  <input type="text" id="updateDurianDistributionCenterID" disabled class="inputBox" size="44" />
+                </td>
+              </tr>
+              <tr>
+                <td>Date Received From Farm:</td>
+                <td class="tableInput">
+                  <input type="text" id="updateDurianDateReceivedFromFarm" placeholder="Enter Date Received From Farm"
+                    class="inputBox" size="44" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button onclick="updateDurianInfoForDistributor(); snackbar();" class="button">
+              Update Durian
+            </button>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+            <h2><u>Update Date Pass to Retailer</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Durian Address:</td>
+                <td class="tableInput">
+                  <input type="text" id="updateDateDurianAddress" placeholder="Enter Durian Address" class="inputBox"
+                    size="44" />
+                </td>
+              </tr>
+              <tr>
+                <td>Date Pass to Retailer:</td>
+                <td class="tableInput">
+                  <input type="text" id="updateDateDatePassToRetailer" placeholder="Enter Date Pass to Retailer"
+                    class="inputBox" size="44" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button onclick="updateDatePassToRetailer(); snackbar();" class="button">
+              Update Date
+            </button>
+          </div>
         </div>
+        <button class="disconnectButton" onclick="disconnect()">
+          Log Out
+        </button>
       </div>
-      <div id="snackbar">Changes made successfully</div>
-    </main>
-  </body>
+    </div>
+    <div id="snackbar">Changes made successfully</div>
+  </main>
+</body>
 
-  <script>
-    window.addEventListener('load', async () => {
-      await accessToMetamask();
-      await accessToContract();
+<script>
+  window.addEventListener('load', async () => {
+    await accessToMetamask();
+    await accessToContract();
 
-      const currentUser = window.ethereum.selectedAddress;
+    const currentUser = window.ethereum.selectedAddress;
 
-      // Get the distribution center address of the current user
-      const result = await getDistributorDistributionCenter(currentUser);
-      document.getElementById('addDistributorDistributionCenterAddress').value =
-        result;
-      document.getElementById('updateDurianDistributionCenterAddress').value =
-        result;
+    // Get the distribution center address of the current user
+    const result = await getDistributorDistributionCenter(currentUser);
+    document.getElementById('addDistributorDistributionCenterID').value =
+      result;
+    document.getElementById('updateDurianDistributionCenterID').value =
+      result;
 
-      // If current user not the farm owner
-      if (
-        currentUser.toLowerCase() !==
-        (await getDistributionCenterOwner(result)).toLowerCase()
-      ) {
-        document.getElementById('addDistributorDiv').style.display = 'none';
-      }
-    });
-  </script>
+    // If current user not the farm owner
+    if (
+      currentUser.toLowerCase() !==
+      (await getDistributionCenterOwner(result)).toLowerCase()
+    ) {
+      document.getElementById('addDistributorDiv').style.display = 'none';
+    }
+  });
+</script>
+
 </html>

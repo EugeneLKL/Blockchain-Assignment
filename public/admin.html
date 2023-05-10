@@ -1,233 +1,189 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
-    ></script>
-    <script src="js/allFunction.js"></script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
-    <title>Durian Tracker Application</title>
-    <!--Links this page to other stylesheets and "ico" file-->
-    <link rel="icon" href="/images/durian-removebg-preview.ico" />
-    <link rel="stylesheet" href="/css/animated_header.css" />
-    <link rel="stylesheet" href="/css/navigation.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-  </head>
-  <!--A Background Image for Body-->
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+  <script src="js/allFunction.js"></script>
 
-  <body style="background-image: url(/images/BGIMG.jpg)">
-    <header>
-      <div class="shell">
-        <!--Title-->
-        <div class="navi">
-          <div class="logo">
-            <img src="/images/durian_Main.png" alt="Durian Logo" height="100" />
-          </div>
-          <div class="title">
-            <h1>Durian Tracker Application</h1>
-          </div>
-          <!--Header text-->
-          <div class="titletext">
-            <h1>
-              Tracing Durian through
-              <span style="color: turquoise">Blockchain</span>
-            </h1>
-            <h2>Secure and transparent tracking of data and transactions</h2>
-          </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+  <title>Durian Tracker Application</title>
+  <!--Links this page to other stylesheets and "ico" file-->
+  <link rel="icon" href="/images/durian-removebg-preview.ico" />
+  <link rel="stylesheet" href="/css/animated_header.css" />
+  <link rel="stylesheet" href="/css/navigation.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<!--A Background Image for Body-->
+
+<body style="background-image: url(/images/BGIMG.jpg)">
+  <header>
+    <div class="shell">
+      <!--Title-->
+      <div class="navi">
+        <div class="logo">
+          <img src="/images/durian_Main.png" alt="Durian Logo" height="100" />
+        </div>
+        <div class="title">
+          <h1>Durian Tracker Application</h1>
+        </div>
+        <!--Header text-->
+        <div class="titletext">
+          <h1>
+            Tracing Durian through
+            <span style="color: turquoise">Blockchain</span>
+          </h1>
+          <h2>Secure and transparent tracking of data and transactions</h2>
         </div>
       </div>
-    </header>
-    <main>
-      <div class="container">
-        <div class="index_box">
-          <br />
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="index_box">
+        <br />
 
-          <h1>Admin</h1>
-          <div>
-            <div class="mini_box">
-              <h2><u>Assign Role</u></h2>
-
-              <br />
-              <table>
-                <tr>
-                  <td>User Address:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="userAddress"
-                      placeholder="Enter User Address"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>Role:</td>
-
-                  <td class="tableInput">
-                    <select id="userRole" class="inputBox">
-                      <option value="1">Farmer</option>
-                      <option value="2">Distributor</option>
-                      <option value="3">Retailer</option>
-                    </select>
-                  </td>
-                </tr>
-              </table>
-
-              <br />
-              <button class="button" onclick="assignRole(); snackbar();">
-                Assign Role
-              </button>
-            </div>
-            <div style="margin-top: 15px" class="mini_box">
-              <h2><u>Create Farm</u></h2>
-              <br />
-              <table>
-                <tr>
-                  <td>Farm ID:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="farmID"
-                      placeholder="Enter Farm ID"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Owner:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="farmOwner"
-                      placeholder="Enter Farm Onwer Address"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Name:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="farmName"
-                      placeholder="Enter Farm Name"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Operating Years:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="farmOperatingYears"
-                      placeholder="Enter Operating Years"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Location:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="farmLocation"
-                      placeholder="Enter Location"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-              </table>
-              <br />
-              <button onclick="createFarm(); snackbar();" class="button">
-                Create Farm
-              </button>
-            </div>
-            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
-              <h2><u>Create Distribution Center</u></h2>
-              <br />
-              <table>
-                <tr>
-                  <td>Owner:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="dcOwner"
-                      placeholder="Enter Distribution Center Owner Address"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Name:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="dcName"
-                      placeholder="Enter Distribution Center Name"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Operating Years:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="dcOperatingYears"
-                      placeholder="Enter Operating Years"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Location:</td>
-                  <td class="tableInput">
-                    <input
-                      size="44"
-                      type="text"
-                      id="dcLocation"
-                      placeholder="Enter Location"
-                      class="inputBox"
-                    />
-                  </td>
-                </tr>
-              </table>
-              <br />
-              <button
-                onclick="createDistributionCenter(); snackbar();"
-                class="button"
-              >
-                Create Distribution Center
-              </button>
-            </div>
+        <h1>Admin</h1>
+        <div>
+          <div class="mini_box">
+            <h2><u>Add Admin</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Admin Address:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="adminAddress" placeholder="Enter Admin Address" class="inputBox" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button class="button" onclick="addAdmin(); snackbar();">
+              Add Admin
+            </button>
           </div>
-          <button class="disconnectButton" onclick="disconnect()">
-            Disconnect
-          </button>
+          <div class="mini_box">
+            <h2><u>Assign Role</u></h2>
+
+            <br />
+            <table>
+              <tr>
+                <td>User Address:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="userAddress" placeholder="Enter User Address" class="inputBox" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>Role:</td>
+
+                <td class="tableInput">
+                  <select id="userRole" class="inputBox">
+                    <option value="1">Farmer</option>
+                    <option value="2">Distributor</option>
+                    <option value="3">Retailer</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+
+            <br />
+            <button class="button" onclick="assignRole(); snackbar();">
+              Assign Role
+            </button>
+          </div>
+          <div style="margin-top: 15px" class="mini_box">
+            <h2><u>Create Farm</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Farm ID:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="farmID" placeholder="Enter Farm ID" class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Owner:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="farmOwner" placeholder="Enter Farm Onwer Address" class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Name:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="farmName" placeholder="Enter Farm Name" class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Operating Years:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="farmOperatingYears" placeholder="Enter Operating Years"
+                    class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="farmLocation" placeholder="Enter Location" class="inputBox" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button onclick="createFarm(); snackbar();" class="button">
+              Create Farm
+            </button>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+            <h2><u>Create Distribution Center</u></h2>
+            <br />
+            <table>
+              <tr>
+                <td>Owner:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="dcOwner" placeholder="Enter Distribution Center Owner Address"
+                    class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Name:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="dcName" placeholder="Enter Distribution Center Name"
+                    class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Operating Years:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="dcOperatingYears" placeholder="Enter Operating Years"
+                    class="inputBox" />
+                </td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td class="tableInput">
+                  <input size="44" type="text" id="dcLocation" placeholder="Enter Location" class="inputBox" />
+                </td>
+              </tr>
+            </table>
+            <br />
+            <button onclick="createDistributionCenter(); snackbar();" class="button">
+              Create Distribution Center
+            </button>
+          </div>
         </div>
+        <button class="disconnectButton" onclick="disconnect()">
+          Log Out
+        </button>
       </div>
-      <div id="snackbar">Changes made successfully</div>
-    </main>
-  </body>
-  <script>
-    window.addEventListener('load', async () => {
-      await accessToMetamask();
-      await accessToContract();
-    });
-  </script>
+    </div>
+    <div id="snackbar">Changes made successfully</div>
+  </main>
+</body>
+<script>
+  window.addEventListener('load', async () => {
+    await accessToMetamask();
+    await accessToContract();
+  });
+</script>
+
 </html>

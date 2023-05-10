@@ -1,114 +1,101 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
-    ></script>
-    <script src="js/allFunction.js"></script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
-    <title>Durian Tracker Application</title>
-    <!--Links this page to other stylesheets and "ico" file-->
-    <link rel="icon" href="images/durian-removebg-preview.ico" />
-    <link rel="stylesheet" href="css/animated_header.css" />
-    <link rel="stylesheet" href="css/navigation.css" />
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <!--A Background Image for Body-->
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+  <script src="js/allFunction.js"></script>
 
-  <body style="background-image: url(images/BGIMG.jpg)">
-    <header>
-      <div class="shell">
-        <!--Title-->
-        <div class="navi">
-          <div class="logo">
-            <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
-          </div>
-          <div class="title">
-            <h1>Durian Tracker Application</h1>
-          </div>
-          <!--Header text-->
-          <div class="titletext">
-            <h1>
-              Tracing Durian through
-              <span style="color: turquoise">Blockchain</span>
-            </h1>
-            <h2>Secure and transparent tracking of data and transactions</h2>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+  <title>Durian Tracker Application</title>
+  <!--Links this page to other stylesheets and "ico" file-->
+  <link rel="icon" href="images/durian-removebg-preview.ico" />
+  <link rel="stylesheet" href="css/animated_header.css" />
+  <link rel="stylesheet" href="css/navigation.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<!--A Background Image for Body-->
+
+<body style="background-image: url(images/BGIMG.jpg)">
+  <header>
+    <div class="shell">
+      <!--Title-->
+      <div class="navi">
+        <div class="logo">
+          <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
+        </div>
+        <div class="title">
+          <h1>Durian Tracker Application</h1>
+        </div>
+        <!--Header text-->
+        <div class="titletext">
+          <h1>
+            Tracing Durian through
+            <span style="color: turquoise">Blockchain</span>
+          </h1>
+          <h2>Secure and transparent tracking of data and transactions</h2>
+          <br />
+          <div class="login_box">
+            <button class="button" onclick="firstAccessToMetamask()" alt="Connect to Metamask button">
+              Connect to Metamask
+            </button>
+            <p>Account number: <span id="accountArea"></span></p>
             <br />
-            <div class="login_box">
-              <button
-                class="button"
-                onclick="firstAccessToMetamask()"
-                alt="Connect to Metamask button"
-              >
-                Connect to Metamask
-              </button>
-              <p>Account number: <span id="accountArea"></span></p>
-              <br />
-              <button
-                class="button"
-                id="accessContractButton"
-                onclick="accessContractHandler()"
-              >
-                Access Contract
-              </button>
-              <p id="accessContractP">
-                Connect Status: <span id="contractArea"></span>
-              </p>
-              <br />
-              <button
-                id="createUserButton"
-                onclick="createUserHandler()"
-                style="display: none"
-              >
-                Register
-              </button>
-              <p id="createUserP" style="display: none">
-                Account number: <span id="contractArea"></span>
-              </p>
-            </div>
+            <button class="button" id="accessContractButton" onclick="accessContractHandler()">
+              Access Contract
+            </button>
+            <p id="accessContractP">
+              Connect Status: <span id="contractArea"></span>
+            </p>
+            <br />
+            <button class="button" id="createUserButton" onclick="createUserHandler()" style="display: none">
+              Register
+            </button>
+            <p id="createUserP" style="display: none">
+              Account number: <span id="contractArea"></span>
+            </p>
           </div>
         </div>
       </div>
-    </header>
-  </body>
-  <script>
-    async function accessContractHandler() {
-      const ownerCreated = await firstAccessToContract();
+    </div>
+  </header>
+</body>
+<script>
+  async function accessContractHandler() {
+    const ownerCreated = await firstAccessToContract();
 
-      const currentUser = window.ethereum.selectedAddress;
-      const currentUserRole = await getRole(currentUser);
-      const isCurrentUserUser = await isUser(currentUser);
-      console.log(await getOwner());
+    const currentUser = window.ethereum.selectedAddress;
+    const currentUserRole = await getRole(currentUser);
+    const isCurrentUserUser = await isUser(currentUser);
+    console.log(await getOwner());
 
-      if (ownerCreated) {
-        window.location.href = 'admin.html';
-      } else if (!isCurrentUserUser) {
-        document.getElementById('createUserButton').style.display = 'block';
-        document.getElementById('createUserP').style.display = 'block';
-      } else if (
-        currentUser.toLowerCase() == (await getOwner()).toLowerCase()
-      ) {
-        window.location.href = 'admin.html';
-      } else if (currentUserRole == 'Farmer') {
-        window.location.href = 'farmer.html';
-      } else if (currentUserRole == 'Distributor') {
-        window.location.href = 'distributor.html';
-      } else if (currentUserRole == 'Retailer') {
-        window.location.href = 'retailer.html';
-      } else if (currentUserRole == 'Consumer') {
-        window.location.href = 'consumer.html';
-      } else {
-        console.log('Error: No role found');
-      }
-    }
-
-    async function createUserHandler() {
-      await createUser();
+    if (ownerCreated) {
+      window.location.href = 'admin.html';
+    } else if (!isCurrentUserUser) {
+      document.getElementById('createUserButton').style.display = 'block';
+      document.getElementById('createUserP').style.display = 'block';
+    } else if (
+      currentUser.toLowerCase() == (await getOwner()).toLowerCase()
+    ) {
+      window.location.href = 'admin.html';
+    } else if (currentUserRole == 'Farmer') {
+      window.location.href = 'farmer.html';
+    } else if (currentUserRole == 'Distributor') {
+      window.location.href = 'distributor.html';
+    } else if (currentUserRole == 'Retailer') {
+      window.location.href = 'retailer.html';
+    } else if (currentUserRole == 'Consumer') {
       window.location.href = 'consumer.html';
+    } else {
+      console.log('Error: No role found');
     }
-  </script>
+  }
+
+  async function createUserHandler() {
+    await createUser();
+    window.location.href = 'consumer.html';
+  }
+</script>
+
 </html>
