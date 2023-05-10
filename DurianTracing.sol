@@ -34,7 +34,7 @@ contract DurianTracing {
     // |                     Struct                     |
     // --------------------------------------------------
     struct Durian {
-        address durianAddress;
+        uint durianID;
         string durianType;
         DurianFarm durianFarm;
         DurianDistributionCenter durianDistributionCenter;
@@ -133,8 +133,8 @@ contract DurianTracing {
     mapping(string => Tree) public trees; // mapping(treeId => tree)
 
     uint public duriansCount;
-    mapping(address => Durian) public durians; // mapping(durianAddress => durian)
-    address[] durianAddresses;
+    mapping(uint => Durian) public durians; // mapping(durianAddress => durian)
+    uint[] durianAddresses;
 
     uint public farmsCount;
     mapping(uint => Farm) public farms; // mapping(farmID => farm)
@@ -381,7 +381,7 @@ contract DurianTracing {
         });
 
         Durian memory durian = Durian({
-            durianAddress: address(this),
+            durianID: duriansCount + 1,
             durianType: _type,
             durianFarm: durianFarm,
             durianDistributionCenter: DurianDistributionCenter({
@@ -409,18 +409,18 @@ contract DurianTracing {
         });
 
         // Add durian to mapping
-        durians[durian.durianAddress] = durian;
+        durians[durian.durianID] = durian;
         duriansCount++;
-        durianAddresses.push(durian.durianAddress);
+        durianAddresses.push(durian.durianID);
     }
 
     // Update date pass to distribution center
     function updateDatePassToDistributionCenter(
-        address _durianAddress,
+        uint _durianID,
         int _datePassToDistributionCenter,
         uint _distributionCenterID
     ) external view onlyFarmer {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian
             .durianFarm
             .datePassToDistributionCenter = _datePassToDistributionCenter;
@@ -429,10 +429,10 @@ contract DurianTracing {
 
     // Update durian information for distributor
     function updateDurianInfoForDistributor(
-        address _durianAddress,
+        uint _durianID,
         int _dateReceivedFromFarm
     ) external view onlyDistributor {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian
             .durianDistributionCenter
             .dateReceivedFromFarm = _dateReceivedFromFarm;
@@ -440,11 +440,11 @@ contract DurianTracing {
 
     // Update date pass to retailer
     function updateDatePassToRetailer(
-        address _durianAddress,
+        uint _durianID,
         int _datePassToRetailer,
         address _retailerAddress
     ) external view onlyDistributor {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian
             .durianDistributionCenter
             .datePassToRetailer = _datePassToRetailer;
@@ -453,10 +453,10 @@ contract DurianTracing {
 
     // Update durian information for retailer
     function updateDurianInfoForRetailer(
-        address _durianAddress,
+        uint _durianID,
         int _dateReceivedFromDistributionCenter
     ) external view onlyRetailer {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian
             .durianRetailer
             .dateReceivedFromDistributionCenter = _dateReceivedFromDistributionCenter;
@@ -464,21 +464,21 @@ contract DurianTracing {
 
     // Update date pass to consumer
     function updateDatePassToConsumer(
-        address _durianAddress,
+        uint _durianID,
         int _datePassToConsumer,
         address _consumerAddress
     ) external view onlyRetailer {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian.durianRetailer.datePassToConsumer = _datePassToConsumer;
         durian.durianRetailer.consumerAddress = _consumerAddress;
     }
 
     // Update durian information for consumer
     function updateDurianInfoForConsumer(
-        address _durianAddress,
+        uint _durianID,
         int _dateReceivedFromRetailer
     ) external view onlyConsumer {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian
             .durianConsumer
             .dateReceivedFromRetailer = _dateReceivedFromRetailer;
@@ -486,7 +486,7 @@ contract DurianTracing {
 
     // Update durian rating
     function updateDurianRating(
-        address _durianAddress,
+        uint _durianID,
         uint _taste,
         uint _fragrance,
         uint _texture,
@@ -495,7 +495,7 @@ contract DurianTracing {
         string memory _gradeRating,
         string memory _comment
     ) external view onlyConsumer {
-        Durian memory durian = durians[_durianAddress];
+        Durian memory durian = durians[_durianID];
         durian.durianConsumer.rating.taste = RatingScale(_taste);
         durian.durianConsumer.rating.fragrance = RatingScale(_fragrance);
         durian.durianConsumer.rating.texture = RatingScale(_texture);
@@ -507,9 +507,9 @@ contract DurianTracing {
 
     // Get durian information for consumer
     function getDurianInfoForConsumer(
-        address _durianAddress
+        uint _durianID
     ) external view onlyConsumer returns (Durian memory) {
-        return durians[_durianAddress];
+        return durians[_durianID];
     }
 
     // ---------------------------------------------------------
@@ -701,13 +701,13 @@ contract DurianTracing {
     // }
 
     // Get all distribution center IDs
-    function getDistributionCenterIDs() external view returns (uint[] memory) {
-        return distributionCenterIDs;
-        // DistributionCenter[] memory distributionCenter = new DistributionCenter[](distributionCenterIDes.length);
-        // for (uint i = 0; i < distributionCenterIDes.length; i++) {
-        // 	distributionCenter[i] = distributionCenters[distributionCenterIDes[i]];
-        // }
-        // return (distributionCenter);
+    function getDistributionCenterIDs() external view returns (DistributionCenter[] memory) {
+        // return distributionCenterIDs;
+        DistributionCenter[] memory distributionCenter = new DistributionCenter[](distributionCenterIDs.length);
+        for (uint i = 0; i < distributionCenterIDs.length; i++) {
+        	distributionCenter[i] = distributionCenters[distributionCenterIDs[i]];
+        }
+        return (distributionCenter);
     }
 
     // -------------------------------------------------------------
@@ -740,6 +740,15 @@ contract DurianTracing {
     ) external onlyRetailer {
         retailers[_retailerAddress].retailerLocation = _location;
         retailers[_retailerAddress].retailerOperatingYears = _operatingYears;
+    }
+
+    // Get retailers
+    function getRetailers() external view returns (Retailer[] memory) {
+        Retailer[] memory retailer = new Retailer[](retailerAddresses.length);
+        for (uint i = 0; i < retailerAddresses.length; i++) {
+        	retailer[i] = retailers[retailerAddresses[i]];
+        }
+        return (retailer);
     }
 
     // -------------------------------------------------------------

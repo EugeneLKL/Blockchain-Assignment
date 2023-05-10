@@ -1,204 +1,280 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
+    ></script>
+    <script src="js/allFunction.js"></script>
 
-<head>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
-  <script src="js/allFunction.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
+    <title>Durian Tracker Application</title>
+    <!--Links this page to other stylesheets and "ico" file-->
+    <link rel="icon" href="/images/durian-removebg-preview.ico" />
+    <link rel="stylesheet" href="/css/animated_header.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <!--A Background Image for Body-->
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content=" width=device-width, initial-scale=1.0" />
-  <title>Durian Tracker Application</title>
-  <!--Links this page to other stylesheets and "ico" file-->
-  <link rel="icon" href="/images/durian-removebg-preview.ico" />
-  <link rel="stylesheet" href="/css/animated_header.css" />
-  <link rel="stylesheet" href="/css/navigation.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<!--A Background Image for Body-->
-
-<body style="background-image: url(images/BGIMG.jpg)">
-  <header>
-    <div class="shell">
-      <!--Title-->
-      <div class="navi">
-        <div class="logo">
-          <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
-        </div>
-        <div class="title">
-          <h1>Durian Tracker Application</h1>
-        </div>
-        <!--Header text-->
-        <div class="titletext">
-          <h1>
-            Tracing Durian through
-            <span style="color: turquoise">Blockchain</span>
-          </h1>
-          <h2>Secure and transparent tracking of data and transactions</h2>
+  <body style="background-image: url(images/BGIMG.jpg)">
+    <header>
+      <div class="shell">
+        <!--Title-->
+        <div class="navi">
+          <div class="logo">
+            <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
+          </div>
+          <div class="title">
+            <h1>Durian Tracker Application</h1>
+          </div>
+          <!--Header text-->
+          <div class="titletext">
+            <h1>
+              Tracing Durian through
+              <span style="color: turquoise">Blockchain</span>
+            </h1>
+            <h2>Secure and transparent tracking of data and transactions</h2>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="index_box">
-        <br />
+    </header>
+    <main>
+      <div class="container">
+        <div class="index_box">
+          <br />
 
-        <h1>Farmer</h1>
-        <div class="container">
-          <div class="mini_box" id="addFarmerDiv">
-            <h2><u>Add Farmer</u></h2>
-            <br />
-            <table>
-              <tr>
-                <td>Farm Address:</td>
-                <td class="tableInput">
-                  <input type="text" id="addFarmerFarmAddress" disabled class="inputBox" size="44" />
-                </td>
-              </tr>
-              <tr>
-                <td>User Address:</td>
-                <td class="tableInput">
-                  <input type="text" id="addFarmerUserAddress" placeholder="Enter User Address" class="inputBox"
-                    size="44" />
-                </td>
-              </tr>
-            </table>
+          <h1>Farmer</h1>
+          <div class="container">
+            <div class="mini_box" id="addFarmerDiv">
+              <h2><u>Add Farmer</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Farm Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="addFarmerFarmAddress"
+                      disabled
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>User Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="addFarmerUserAddress"
+                      placeholder="Enter User Address"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
 
-            <br />
-            <button onclick="addFarmerToFarm(); snackbar();" class="button">
-              Add Farmer
-            </button>
-          </div>
-          <div style="margin-top: 15px" class="mini_box">
-            <h2><u>Add Tree</u></h2>
-            <br />
-            <table>
-              <tr>
-                <td>Farm Address:</td>
-                <td class="tableInput">
-                  <input type="text" id="addTreeFarmAddress" disabled class="inputBox" size="44" />
-                </td>
-              </tr>
-              <tr>
-                <td>Tree ID:</td>
-                <td class="tableInput">
-                  <input type="text" id="addTreeTreeId" placeholder="Enter Tree ID" class="inputBox" size="44" />
-                </td>
-              </tr>
-            </table>
+              <br />
+              <button onclick="addFarmerToFarm(); snackbar();" class="button">
+                Add Farmer
+              </button>
+            </div>
+            <div style="margin-top: 15px" class="mini_box">
+              <h2><u>Add Tree</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Farm Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="addTreeFarmAddress"
+                      disabled
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tree ID:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="addTreeTreeId"
+                      placeholder="Enter Tree ID"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
 
-            <br />
-            <button onclick="addTreeToFarm(); snackbar();" class="button">
-              Add Tree
-            </button>
-          </div>
-          <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
-            <h2><u>Create Durian</u></h2>
-            <br />
-            <table>
-              <tr>
-                <td>Durian Type:</td>
-                <td class="tableInput">
-                  <input type="text" id="createDurianType" placeholder="Enter Durian type" class="inputBox" size="44" />
-                </td>
-              </tr>
-              <tr>
-                <td>Tree ID:</td>
-                <td class="tableInput">
-                  <input type="text" id="createDurianTreeAddress" placeholder="Enter Tree Address" class="inputBox"
-                    size="44" />
-                </td>
-              </tr>
-              <tr>
-                <td>Harvest Date:</td>
-                <td class="tableInput">
-                  <input type="text" id="createDurianHarvestDate" placeholder="Enter Harvest Date" class="inputBox"
-                    size="44" />
-                </td>
-              </tr>
-              <tr>
-                <td>Harvest Time:</td>
-                <td class="tableInput">
-                  <input type="text" id="createDurianHarvestTime" placeholder="Enter Harvest Time" class="inputBox"
-                    size="44" />
-                </td>
-              </tr>
-            </table>
+              <br />
+              <button onclick="addTreeToFarm(); snackbar();" class="button">
+                Add Tree
+              </button>
+            </div>
+            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+              <h2><u>Create Durian</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Farm Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="createDurianFarmAddress"
+                      disabled
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Durian Type:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="createDurianType"
+                      placeholder="Enter Durian type"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tree ID:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="createDurianTreeAddress"
+                      placeholder="Enter Tree Address"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Harvest Date:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="createDurianHarvestDate"
+                      placeholder="Enter Harvest Date"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Harvest Time:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="createDurianHarvestTime"
+                      placeholder="Enter Harvest Time"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
 
-            <br />
-            <button onclick="createDurian(); snackbar();" class="button">
-              Create Durian
-            </button>
+              <br />
+              <button onclick="createDurian(); snackbar();" class="button">
+                Create Durian
+              </button>
+            </div>
+            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+              <h2><u>Update Durian</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Durian ID:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDateDurianID"
+                      placeholder="Enter Durian ID"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Distribution Center Address:</td>
+                  <td class="tableInput">
+                    <select
+                      id="updateDurianDistributionCenterAddress"
+                      class="inputBox"
+                    ></select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date Pass to Distribution Center:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="updateDurianDatePassToDistributionCenter"
+                      placeholder="Enter Durian type"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <br />
+              <button onclick="snackbar();" class="button">
+                Update Durian
+              </button>
+            </div>
           </div>
-          <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
-            <h2><u>Update Durian</u></h2>
-            <br />
-            <table>
-              <tr>
-                <td>Distribution Center Address:</td>
-                <td class="tableInput">
-                  <select id="updateDurianDistributionCenterAddress" class="inputBox"></select>
-                </td>
-              </tr>
-              <tr>
-                <td>Date Pass to Distribution Center:</td>
-                <td class="tableInput">
-                  <input type="text" id="updateDurianDatePassToDistributionCenter" placeholder="Enter Durian type"
-                    class="inputBox" size="44" />
-                </td>
-              </tr>
-            </table>
-            <br />
-            <button onclick="snackbar();" class="button">
-              Update Durian
-            </button>
-          </div>
+          <button class="disconnectButton" onclick="disconnect()">
+            Log Out
+          </button>
         </div>
-        <button class="disconnectButton" onclick="disconnect()">
-          Log Out
-        </button>
+        <div id="snackbar">Changes made successfully</div>
       </div>
-      <div id="snackbar">Changes made successfully</div>
-    </div>
-  </main>
-</body>
-<script>
-  window.addEventListener('load', async () => {
-    await accessToMetamask();
-    await accessToContract();
+    </main>
+  </body>
+  <script>
+    window.addEventListener('load', async () => {
+      await accessToMetamask();
+      await accessToContract();
 
-    const currentUser = window.ethereum.selectedAddress;
+      const currentUser = window.ethereum.selectedAddress;
 
-    // Get the farm address of the current user
-    const result = await getFarmerFarm(currentUser);
-    document.getElementById('addFarmerFarmAddress').value = result;
-    document.getElementById('addTreeFarmAddress').value = result;
-    document.getElementById('createDurianFarmAddress').value = result;
+      // Get the farm address of the current user
+      const result = await getFarmerFarm(currentUser);
+      document.getElementById('addFarmerFarmAddress').value = result;
+      document.getElementById('addTreeFarmAddress').value = result;
+      document.getElementById('createDurianFarmAddress').value = result;
 
-    // If current user not the farm owner
-    if (
-      currentUser.toLowerCase() !== (await getFarmOwner(result)).toLowerCase()
-    ) {
-      document.getElementById('addFarmerDiv').style.display = 'none';
-    }
+      // If current user not the farm owner
+      if (
+        currentUser.toLowerCase() !== (await getFarmOwner(result)).toLowerCase()
+      ) {
+        document.getElementById('addFarmerDiv').style.display = 'none';
+      }
 
-    // Get all distribution center addresses
-    const distributionCenterAddresses =
-      await getDistributionCenterAddresses();
+      // Get all distribution center addresses
+      const distributionCenterIDs = await getDistributionCenterIDs();
 
-    console.log(distributionCenterAddresses);
+      console.log(distributionCenterIDs);
 
-    // // For each distribution center address, add an option to the select box
-    // for (let i = 0; i < distributionCenterAddresses.length; i++) {
-    //   const option = document.createElement('option');
-    //   option.value = distributionCenterAddresses[i].distributionCenterAddress;
-    //   option.text = distributionCenterAddresses[i].distributionCenterName;
-    //   document
-    //     .getElementById('updateDurianDistributionCenterAddress')
-    //     .appendChild(option);
-    // }
-  });
-</script>
-
+      // For each distribution center id, add an option to the select box
+      distributionCenterIDs.forEach((distributionCenterID) => {
+        const option = document.createElement('option');
+        option.value = distributionCenterID.distributionCenterID;
+        option.innerHTML = distributionCenterID.distributionCenterName;
+        document
+          .getElementById('updateDurianDistributionCenterAddress')
+          .appendChild(option);
+      });
+    });
+  </script>
 </html>
