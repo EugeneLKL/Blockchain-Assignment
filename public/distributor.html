@@ -90,15 +90,12 @@
               <br />
               <table>
                 <tr>
-                  <td>Durian Address:</td>
+                  <td>Durian ID:</td>
                   <td class="tableInput">
-                    <input
-                      type="text"
+                    <select
                       id="updateDurianDurianAddress"
-                      placeholder="Enter Durian Address"
                       class="inputBox"
-                      size="44"
-                    />
+                    ></select>
                   </td>
                 </tr>
                 <tr>
@@ -126,15 +123,12 @@
               <br />
               <table>
                 <tr>
-                  <td>Durian Address:</td>
+                  <td>Durian ID:</td>
                   <td class="tableInput">
-                    <input
-                      type="text"
+                    <select
                       id="updateDurianToRetailerDurianAddress"
-                      placeholder="Enter Durian Address"
                       class="inputBox"
-                      size="44"
-                    />
+                    ></select>
                   </td>
                 </tr>
                 <tr>
@@ -209,6 +203,26 @@
         document
           .getElementById('updateDurianRetailerAddress')
           .appendChild(option);
+      });
+
+      // Get all durian
+      const allDurians = await getDurian();
+      console.log(allDurians);
+
+      // For each durian
+      allDurians.forEach((durian) => {
+        console.log(durian.durianFarm);
+        if (durian.durianFarm.distributionCenterID == result) {
+          const option = document.createElement('option');
+          option.value = durian.durianID;
+          option.innerHTML = durian.durianID;
+          document
+            .getElementById('updateDurianToRetailerDurianAddress')
+            .appendChild(option);
+          document
+            .getElementById('updateDurianDurianAddress')
+            .appendChild(option.cloneNode(true));
+        }
       });
     });
   </script>

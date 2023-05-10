@@ -3,11 +3,6 @@ let noOfAccount = 0;
 
 const ABI = [
   {
-    inputs: [],
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-  },
-  {
     inputs: [
       {
         internalType: 'address',
@@ -78,25 +73,6 @@ const ABI = [
     inputs: [
       {
         internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'admins',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
         name: '_userAddress',
         type: 'address',
       },
@@ -109,61 +85,6 @@ const ABI = [
     name: 'assignRole',
     outputs: [],
     stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'consumers',
-    outputs: [
-      {
-        internalType: 'address',
-        name: 'consumerAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: 'consumerName',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'consumerLocation',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'consumersCount',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'contractOwner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -273,6 +194,292 @@ const ABI = [
   {
     inputs: [
       {
+        internalType: 'address',
+        name: '_adminAddress',
+        type: 'address',
+      },
+    ],
+    name: 'removeAdmin',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_datePassToConsumer',
+        type: 'int256',
+      },
+      {
+        internalType: 'address',
+        name: '_consumerAddress',
+        type: 'address',
+      },
+    ],
+    name: 'updateDatePassToConsumer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_datePassToDistributionCenter',
+        type: 'int256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_distributionCenterID',
+        type: 'uint256',
+      },
+    ],
+    name: 'updateDatePassToDistributionCenter',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_datePassToRetailer',
+        type: 'int256',
+      },
+      {
+        internalType: 'address',
+        name: '_retailerAddress',
+        type: 'address',
+      },
+    ],
+    name: 'updateDatePassToRetailer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_dateReceivedFromRetailer',
+        type: 'int256',
+      },
+    ],
+    name: 'updateDurianInfoForConsumer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_dateReceivedFromFarm',
+        type: 'int256',
+      },
+    ],
+    name: 'updateDurianInfoForDistributor',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'int256',
+        name: '_dateReceivedFromDistributionCenter',
+        type: 'int256',
+      },
+    ],
+    name: 'updateDurianInfoForRetailer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_durianID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_taste',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_fragrance',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_texture',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_creaminess',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_ripeness',
+        type: 'uint256',
+      },
+      {
+        internalType: 'string',
+        name: '_gradeRating',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: '_comment',
+        type: 'string',
+      },
+    ],
+    name: 'updateDurianRating',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_retailerAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'string',
+        name: '_location',
+        type: 'string',
+      },
+      {
+        internalType: 'uint256',
+        name: '_operatingYears',
+        type: 'uint256',
+      },
+    ],
+    name: 'updateRetailerInfo',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'admins',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    name: 'consumers',
+    outputs: [
+      {
+        internalType: 'address',
+        name: 'consumerAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'string',
+        name: 'consumerName',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: 'consumerLocation',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'consumersCount',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'contractOwner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
         internalType: 'uint256',
         name: '',
         type: 'uint256',
@@ -303,11 +510,6 @@ const ABI = [
       {
         internalType: 'uint256',
         name: 'distributionCenterOperatingYears',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'lastPassingDate',
         type: 'uint256',
       },
     ],
@@ -567,11 +769,6 @@ const ABI = [
         name: 'farmOperatingYears',
         type: 'uint256',
       },
-      {
-        internalType: 'uint256',
-        name: 'lastPassingDate',
-        type: 'uint256',
-      },
     ],
     stateMutability: 'view',
     type: 'function',
@@ -655,11 +852,6 @@ const ABI = [
             name: 'distributors',
             type: 'address[]',
           },
-          {
-            internalType: 'uint256',
-            name: 'lastPassingDate',
-            type: 'uint256',
-          },
         ],
         internalType: 'struct DurianTracing.DistributionCenter[]',
         name: '',
@@ -702,6 +894,161 @@ const ABI = [
         internalType: 'uint256',
         name: '',
         type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getDurian',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'uint256',
+            name: 'durianID',
+            type: 'uint256',
+          },
+          {
+            internalType: 'string',
+            name: 'durianType',
+            type: 'string',
+          },
+          {
+            components: [
+              {
+                internalType: 'uint256',
+                name: 'farmID',
+                type: 'uint256',
+              },
+              {
+                internalType: 'uint256',
+                name: 'treeID',
+                type: 'uint256',
+              },
+              {
+                internalType: 'int256',
+                name: 'harvestDateTime',
+                type: 'int256',
+              },
+              {
+                internalType: 'int256',
+                name: 'datePassToDistributionCenter',
+                type: 'int256',
+              },
+              {
+                internalType: 'uint256',
+                name: 'distributionCenterID',
+                type: 'uint256',
+              },
+            ],
+            internalType: 'struct DurianTracing.DurianFarm',
+            name: 'durianFarm',
+            type: 'tuple',
+          },
+          {
+            components: [
+              {
+                internalType: 'int256',
+                name: 'dateReceivedFromFarm',
+                type: 'int256',
+              },
+              {
+                internalType: 'int256',
+                name: 'datePassToRetailer',
+                type: 'int256',
+              },
+              {
+                internalType: 'address',
+                name: 'retailerAddress',
+                type: 'address',
+              },
+            ],
+            internalType: 'struct DurianTracing.DurianDistributionCenter',
+            name: 'durianDistributionCenter',
+            type: 'tuple',
+          },
+          {
+            components: [
+              {
+                internalType: 'int256',
+                name: 'dateReceivedFromDistributionCenter',
+                type: 'int256',
+              },
+              {
+                internalType: 'int256',
+                name: 'datePassToConsumer',
+                type: 'int256',
+              },
+              {
+                internalType: 'address',
+                name: 'consumerAddress',
+                type: 'address',
+              },
+            ],
+            internalType: 'struct DurianTracing.DurianRetailer',
+            name: 'durianRetailer',
+            type: 'tuple',
+          },
+          {
+            components: [
+              {
+                internalType: 'int256',
+                name: 'dateReceivedFromRetailer',
+                type: 'int256',
+              },
+              {
+                components: [
+                  {
+                    internalType: 'enum DurianTracing.RatingScale',
+                    name: 'taste',
+                    type: 'uint8',
+                  },
+                  {
+                    internalType: 'enum DurianTracing.RatingScale',
+                    name: 'fragrance',
+                    type: 'uint8',
+                  },
+                  {
+                    internalType: 'enum DurianTracing.RatingScale',
+                    name: 'texture',
+                    type: 'uint8',
+                  },
+                  {
+                    internalType: 'enum DurianTracing.RatingScale',
+                    name: 'creaminess',
+                    type: 'uint8',
+                  },
+                  {
+                    internalType: 'enum DurianTracing.RatingScale',
+                    name: 'ripeness',
+                    type: 'uint8',
+                  },
+                  {
+                    internalType: 'string',
+                    name: 'gradeRating',
+                    type: 'string',
+                  },
+                  {
+                    internalType: 'string',
+                    name: 'comment',
+                    type: 'string',
+                  },
+                ],
+                internalType: 'struct DurianTracing.Rating',
+                name: 'rating',
+                type: 'tuple',
+              },
+            ],
+            internalType: 'struct DurianTracing.DurianConsumer',
+            name: 'durianConsumer',
+            type: 'tuple',
+          },
+        ],
+        internalType: 'struct DurianTracing.Durian[]',
+        name: '',
+        type: 'tuple[]',
       },
     ],
     stateMutability: 'view',
@@ -871,25 +1218,6 @@ const ABI = [
   {
     inputs: [
       {
-        internalType: 'uint256',
-        name: '_farmID',
-        type: 'uint256',
-      },
-    ],
-    name: 'getFarmOwner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
         internalType: 'address',
         name: '_farmerAddress',
         type: 'address',
@@ -901,6 +1229,25 @@ const ABI = [
         internalType: 'uint256',
         name: '',
         type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_farmID',
+        type: 'uint256',
+      },
+    ],
+    name: 'getFarmOwner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
       },
     ],
     stateMutability: 'view',
@@ -960,48 +1307,6 @@ const ABI = [
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'getRoleList',
-    outputs: [
-      {
-        internalType: 'string[]',
-        name: '',
-        type: 'string[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_userAddress',
-        type: 'address',
-      },
-    ],
-    name: 'getUser',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: '',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
     inputs: [
       {
         internalType: 'address',
@@ -1037,19 +1342,6 @@ const ABI = [
       },
     ],
     stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_adminAddress',
-        type: 'address',
-      },
-    ],
-    name: 'removeAdmin',
-    outputs: [],
-    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -1108,42 +1400,6 @@ const ABI = [
     inputs: [
       {
         internalType: 'uint256',
-        name: '_farmID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_lastPassingDate',
-        type: 'uint256',
-      },
-    ],
-    name: 'setLastPassingDate',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_farmID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_operatingYears',
-        type: 'uint256',
-      },
-    ],
-    name: 'setOperatingYears',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
         name: '',
         type: 'uint256',
       },
@@ -1180,200 +1436,6 @@ const ABI = [
       },
     ],
     stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_datePassToConsumer',
-        type: 'int256',
-      },
-      {
-        internalType: 'address',
-        name: '_consumerAddress',
-        type: 'address',
-      },
-    ],
-    name: 'updateDatePassToConsumer',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_datePassToDistributionCenter',
-        type: 'int256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_distributionCenterID',
-        type: 'uint256',
-      },
-    ],
-    name: 'updateDatePassToDistributionCenter',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_datePassToRetailer',
-        type: 'int256',
-      },
-      {
-        internalType: 'address',
-        name: '_retailerAddress',
-        type: 'address',
-      },
-    ],
-    name: 'updateDatePassToRetailer',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_dateReceivedFromRetailer',
-        type: 'int256',
-      },
-    ],
-    name: 'updateDurianInfoForConsumer',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_dateReceivedFromFarm',
-        type: 'int256',
-      },
-    ],
-    name: 'updateDurianInfoForDistributor',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'int256',
-        name: '_dateReceivedFromDistributionCenter',
-        type: 'int256',
-      },
-    ],
-    name: 'updateDurianInfoForRetailer',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_durianID',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_taste',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_fragrance',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_texture',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_creaminess',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_ripeness',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: '_gradeRating',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: '_comment',
-        type: 'string',
-      },
-    ],
-    name: 'updateDurianRating',
-    outputs: [],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_retailerAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: '_location',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: '_operatingYears',
-        type: 'uint256',
-      },
-    ],
-    name: 'updateRetailerInfo',
-    outputs: [],
-    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -1419,7 +1481,7 @@ const ABI = [
     type: 'function',
   },
 ];
-const Address = '0x3DaDb1d15b7aa503248293f0Cc08408C3494B875';
+const Address = '0x06ad2041B6A5717045868AAE76eC72c241D73F4B';
 
 const firstAccessToMetamask = async () => {
   if (window.ethereum !== 'undefined') {
@@ -1724,7 +1786,7 @@ const updateDatePassToDistributionCenter = async () => {
   const distributionCenterSelector = document.getElementById(
     'updateDurianDistributionCenterAddress',
   );
-  var distributionCenterAddress =
+  const distributionCenterAddress =
     distributionCenterSelector.options[distributionCenterSelector.selectedIndex]
       .value;
   const datePassToDistributionCenter = document.getElementById(
@@ -1956,14 +2018,24 @@ const updateDatePassToConsumer = async () => {
 
 // Update durian info for consumer
 const updateDurianInfoForConsumer = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const datePassToConsumer =
-    document.getElementById('datePassToConsumer').value;
+  const durianAddressSelector = document.getElementById('updateDurianAddress');
+  const durianAddress =
+    durianAddressSelector.options[durianAddressSelector.selectedIndex].value;
+
+  const dateReceiverFromRetailer = document.getElementById(
+    'dateReceivedFromRetailer',
+  ).value;
+
+  // Change date format to unix
+  const dateObject = new Date(dateReceiverFromRetailer);
+  const dateReceiverFromRetailerTime = Math.floor(
+    Date.parse(dateObject) / 1000,
+  );
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .updateDurianInfoForConsumer(durianAddress, datePassToConsumer)
+      .updateDurianInfoForConsumer(durianAddress, dateReceiverFromRetailerTime)
       .send({ from: account });
     console.log(result);
   }
@@ -1971,12 +2043,51 @@ const updateDurianInfoForConsumer = async () => {
 
 // Update durian rating
 const updateDurianRating = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const taste = document.getElementById('taste').value;
-  const fragrance = document.getElementById('fragrance').value;
-  const texture = document.getElementById('texture').value;
-  const creaminess = document.getElementById('creaminess').value;
-  const ripeness = document.getElementById('ripeness').value;
+  const durianAddressSelector = document.getElementById('RateDurianAddress');
+  const durianID =
+    durianAddressSelector.options[durianAddressSelector.selectedIndex].value;
+  console.log(durianID);
+
+  const tasteSelector = document.getElementsByName('ratingTaste');
+  let taste;
+  for (let i = 0; i < tasteSelector.length; i++) {
+    if (tasteSelector[i].checked) {
+      taste = tasteSelector[i].value;
+    }
+  }
+
+  const fragranceSelector = document.getElementsByName('ratingFragrance');
+  let fragrance;
+  for (let i = 0; i < fragranceSelector.length; i++) {
+    if (fragranceSelector[i].checked) {
+      fragrance = fragranceSelector[i].value;
+    }
+  }
+
+  const textureSelector = document.getElementsByName('ratingTexture');
+  let texture;
+  for (let i = 0; i < textureSelector.length; i++) {
+    if (textureSelector[i].checked) {
+      texture = textureSelector[i].value;
+    }
+  }
+
+  const creaminessSelector = document.getElementsByName('ratingCreaminess');
+  let creaminess;
+  for (let i = 0; i < creaminessSelector.length; i++) {
+    if (creaminessSelector[i].checked) {
+      creaminess = creaminessSelector[i].value;
+    }
+  }
+
+  const ripenessSelector = document.getElementsByName('ratingRipeness');
+  let ripeness;
+  for (let i = 0; i < ripenessSelector.length; i++) {
+    if (ripenessSelector[i].checked) {
+      ripeness = ripenessSelector[i].value;
+    }
+  }
+
   const gradeRating = document.getElementById('gradeRating').value;
   const comment = document.getElementById('comment').value;
 
@@ -1984,7 +2095,7 @@ const updateDurianRating = async () => {
     console.log(window.contract.methods);
     const result = await window.contract.methods
       .updateDurianRating(
-        durianAddress,
+        durianID,
         taste,
         fragrance,
         texture,
@@ -1999,20 +2110,17 @@ const updateDurianRating = async () => {
 };
 
 // Display durian info for consumer
-const displayDurianInfoForConsumer = async () => {
-  const durianAddress = document.getElementById('durianID').value;
+const getDurianInfoForConsumer = async () => {
+  const durianID = document.getElementById('selectDurianID').value;
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .displayDurianInfoForConsumer(durianID)
+      .getDurianInfoForConsumer(durianID)
       .call();
     console.log(result);
     return result;
   }
 };
-
-
-
 
 /////////////////////////////////////////////////////////////
 // UTILITY
@@ -2058,3 +2166,13 @@ function setDefaultTime() {
   // Set the default value of the time input field to the current time
   document.getElementById('createDurianHarvestTime').value = currentTime;
 }
+
+// Get durian
+const getDurian = async (address) => {
+  if (window.ethereum !== 'undefined') {
+    const result = await window.contract.methods.getDurian().call();
+    console.log(result);
+
+    return result;
+  }
+};

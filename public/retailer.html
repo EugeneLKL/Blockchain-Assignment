@@ -53,15 +53,12 @@
               <br />
               <table>
                 <tr>
-                  <td>Durian Address:</td>
+                  <td>Durian ID:</td>
                   <td class="tableInput">
-                    <input
-                      type="text"
+                    <select
                       id="updateDurianDurianAddress"
-                      placeholder="Enter Durian Address"
                       class="inputBox"
-                      size="44"
-                    />
+                    ></select>
                   </td>
                 </tr>
                 <tr>
@@ -138,18 +135,16 @@
               <br />
               <table>
                 <tr>
-                  <td>Durian Address:</td>
+                  <td>Durian ID:</td>
                   <td class="tableInput">
-                    <input
-                      type="text"
+                    <select
                       id="updateDateDurianAddress"
-                      placeholder="Enter Durian Address"
                       class="inputBox"
-                      size="44"
-                    />
+                    ></select>
                   </td>
                 </tr>
                 <tr>
+                  <td>Consumer Address:</td>
                   <td class="tableInput">
                     <select
                       id="updateDateConsumerAddress"
@@ -207,6 +202,27 @@
         document
           .getElementById('updateDateConsumerAddress')
           .appendChild(option);
+      });
+
+      // Get all durian
+      const allDurians = await getDurian();
+
+      // For each durian
+      allDurians.forEach((durian) => {
+        if (
+          durian.durianDistributionCenter.retailerAddress.toLowerCase() ==
+          currentUser.toLowerCase()
+        ) {
+          const option = document.createElement('option');
+          option.value = durian.durianID;
+          option.innerHTML = durian.durianID;
+          document
+            .getElementById('updateDurianDurianAddress')
+            .appendChild(option);
+          document
+            .getElementById('updateDateDurianAddress')
+            .appendChild(option.cloneNode(true));
+        }
       });
     });
   </script>

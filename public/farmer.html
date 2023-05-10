@@ -196,13 +196,7 @@
                 <tr>
                   <td>Durian ID:</td>
                   <td class="tableInput">
-                    <input
-                      type="text"
-                      id="updateDateDurianID"
-                      placeholder="Enter Durian ID"
-                      class="inputBox"
-                      size="44"
-                    />
+                    <select id="updateDateDurianID" class="inputBox"></select>
                   </td>
                 </tr>
                 <tr>
@@ -266,8 +260,6 @@
       // Get all distribution center addresses
       const distributionCenterIDs = await getDistributionCenterIDs();
 
-      console.log(distributionCenterIDs);
-
       // For each distribution center id, add an option to the select box
       distributionCenterIDs.forEach((distributionCenterID) => {
         const option = document.createElement('option');
@@ -276,6 +268,19 @@
         document
           .getElementById('updateDurianDistributionCenterAddress')
           .appendChild(option);
+      });
+
+      // Get all durian
+      const allDurians = await getDurian();
+
+      // For each durian
+      allDurians.forEach((durian) => {
+        if (durian.durianFarm.farmID == result) {
+          const option = document.createElement('option');
+          option.value = durian.durianID;
+          option.innerHTML = durian.durianID;
+          document.getElementById('updateDateDurianID').appendChild(option);
+        }
       });
     });
   </script>
