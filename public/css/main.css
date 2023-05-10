@@ -36,12 +36,12 @@ html {
   position: relative;
 }
 
-.functionContainer > h1 {
+.functionContainer>h1 {
   text-align: center;
   font-size: 35px;
 }
 
-.functionContainer > h2 {
+.functionContainer>h2 {
   text-align: left;
   font-size: 20px;
 }
@@ -55,25 +55,25 @@ html {
   border-radius: 30px;
 }
 
-.index_box > h1 {
+.index_box>h1 {
   text-align: center;
   padding: 20px 0px;
   color: rgb(0, 0, 0);
 }
 
-.index_box > h2 {
+.index_box>h2 {
   text-align: center;
   padding: 10px 10px;
   color: rgb(0, 0, 0);
 }
 
-.index_box > button {
+.index_box>button {
   text-align: center;
   padding: 20px 0px;
   color: rgb(0, 0, 0);
 }
 
-.index_box > p {
+.index_box>p {
   text-align: center;
 }
 
@@ -167,7 +167,13 @@ html {
   margin-top: 20px;
   font-size: 20px;
   color: #000;
-  margin: auto;
+  margin: 0 auto;
+  width: fit-content;
+  text-align: left;
+}
+
+.login_box_text_padding {
+  padding-left: 5px;
 }
 
 /* Buttons */

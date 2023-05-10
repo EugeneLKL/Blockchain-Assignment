@@ -1468,7 +1468,7 @@ const getOwner = async () => {
 const createUser = async () => {
   if (window.ethereum !== 'undefined') {
     const result = await window.contract.methods
-      .createUser('test')
+      .createUser(createUserP)
       .send({ from: account });
   }
 };
@@ -1916,4 +1916,28 @@ function disconnect() {
   window.ethereum.selectedAddress = null;
   account = null;
   window.location.href = 'index.html';
+}
+
+function setDefaultDate() {
+  // Get the current date in the format "YYYY-MM-DD"
+  const today = new Date().toISOString().substring(0, 10);
+  // Set the default value of the date input field to today's date
+  document.getElementById("createDurianHarvestDate").value = today;
+  document.getElementById("updateDurianDateReceivedFromDistributionCenter").value = today;
+  document.getElementById("updateDateDatePassToConsumer").value = today;
+  document.getElementById("updateDurianDateReceivedFromFarm").value = today;
+  document.getElementById("updateDurianDatePassToRetailer").value = today;
+  document.getElementById("dateReceivedFromRetailer").value = today;
+  document.getElementById("updateDurianDatePassToDistributionCenter").value = today;
+}
+
+function setDefaultTime() {
+  // Get the current time in the format "HH:MM"
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const currentTime = `${hours}:${minutes}`;
+
+  // Set the default value of the time input field to the current time
+  document.getElementById("createDurianHarvestTime").value = currentTime;
 }

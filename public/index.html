@@ -37,24 +37,54 @@
           <h2>Secure and transparent tracking of data and transactions</h2>
           <br />
           <div class="login_box">
-            <button class="button" onclick="firstAccessToMetamask()" alt="Connect to Metamask button">
-              Connect to Metamask
-            </button>
-            <p>Account number: <span id="accountArea"></span></p>
-            <br />
-            <button class="button" id="accessContractButton" onclick="accessContractHandler()">
-              Access Contract
-            </button>
-            <p id="accessContractP">
-              Connect Status: <span id="contractArea"></span>
-            </p>
-            <br />
-            <button class="button" id="createUserButton" onclick="createUserHandler()" style="display: none">
-              Register
-            </button>
-            <p id="createUserP" style="display: none">
-              Account number: <span id="contractArea"></span>
-            </p>
+            <table>
+              <tr>
+                <td>
+                  <p class="login_box_text_padding">Account number: <span id="accountArea"></span></p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button class="button" onclick="firstAccessToMetamask()" alt="Connect to Metamask button">
+                    Connect to Metamask
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-top: 20px;">
+                  <p class="login_box_text_padding" id="accessContractP">
+                    Connect Status: <span id="contractArea"></span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button class="button" id="accessContractButton" onclick="accessContractHandler()">
+                    Access Contract
+                  </button>
+                </td>
+              </tr>
+
+            </table>
+            <table>
+              <tr>
+                <td class="login_box_text_padding" style="padding-top: 20px; text-align: left;">Username: </td>
+                <td>
+                  <input style="margin-top: 10px;" type="text" id="createUserP" placeholder="Enter New Username"
+                    class="inputBox" />
+                </td>
+
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button class="button" id="createUserButton" onclick="createUserHandler()">
+                    Register
+                  </button>
+                </td>
+              </tr>
+            </table>
+
           </div>
         </div>
       </div>
