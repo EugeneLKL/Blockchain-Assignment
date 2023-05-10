@@ -1419,7 +1419,7 @@ const ABI = [
     type: 'function',
   },
 ];
-const Address = '0xaDe3f05B38b438aAd4944c6ecd1D926b0B6d5610';
+const Address = '0x3DaDb1d15b7aa503248293f0Cc08408C3494B875';
 
 const firstAccessToMetamask = async () => {
   if (window.ethereum !== 'undefined') {
@@ -1997,6 +1997,22 @@ const updateDurianRating = async () => {
     console.log(result);
   }
 };
+
+// Display durian info for consumer
+const displayDurianInfoForConsumer = async () => {
+  const durianAddress = document.getElementById('durianID').value;
+  if (window.ethereum !== 'undefined') {
+    console.log(window.contract.methods);
+    const result = await window.contract.methods
+      .displayDurianInfoForConsumer(durianID)
+      .call();
+    console.log(result);
+    return result;
+  }
+};
+
+
+
 
 /////////////////////////////////////////////////////////////
 // UTILITY
