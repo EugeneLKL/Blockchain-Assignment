@@ -64,9 +64,9 @@ const ABI = [
         type: 'uint256',
       },
       {
-        internalType: 'string',
+        internalType: 'uint256',
         name: '_treeID',
-        type: 'string',
+        type: 'uint256',
       },
     ],
     name: 'addTreeToFarm',
@@ -207,18 +207,13 @@ const ABI = [
         type: 'string',
       },
       {
-        internalType: 'address',
-        name: '_treeAddress',
-        type: 'address',
+        internalType: 'uint256',
+        name: '_treeID',
+        type: 'uint256',
       },
       {
         internalType: 'int256',
-        name: '_harvestDate',
-        type: 'int256',
-      },
-      {
-        internalType: 'int256',
-        name: '_harvestTime',
+        name: '_harvestDateTime',
         type: 'int256',
       },
     ],
@@ -379,18 +374,13 @@ const ABI = [
             type: 'uint256',
           },
           {
-            internalType: 'address',
-            name: 'treeAddress',
-            type: 'address',
+            internalType: 'uint256',
+            name: 'treeID',
+            type: 'uint256',
           },
           {
             internalType: 'int256',
-            name: 'harvestDate',
-            type: 'int256',
-          },
-          {
-            internalType: 'int256',
-            name: 'harvestTime',
+            name: 'harvestDateTime',
             type: 'int256',
           },
           {
@@ -601,6 +591,36 @@ const ABI = [
   },
   {
     inputs: [],
+    name: 'getConsumers',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'address',
+            name: 'consumerAddress',
+            type: 'address',
+          },
+          {
+            internalType: 'string',
+            name: 'consumerName',
+            type: 'string',
+          },
+          {
+            internalType: 'string',
+            name: 'consumerLocation',
+            type: 'string',
+          },
+        ],
+        internalType: 'struct DurianTracing.Consumer[]',
+        name: '',
+        type: 'tuple[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'getDistributionCenterIDs',
     outputs: [
       {
@@ -717,18 +737,13 @@ const ABI = [
                 type: 'uint256',
               },
               {
-                internalType: 'address',
-                name: 'treeAddress',
-                type: 'address',
+                internalType: 'uint256',
+                name: 'treeID',
+                type: 'uint256',
               },
               {
                 internalType: 'int256',
-                name: 'harvestDate',
-                type: 'int256',
-              },
-              {
-                internalType: 'int256',
-                name: 'harvestTime',
+                name: 'harvestDateTime',
                 type: 'int256',
               },
               {
@@ -1128,17 +1143,17 @@ const ABI = [
   {
     inputs: [
       {
-        internalType: 'string',
+        internalType: 'uint256',
         name: '',
-        type: 'string',
+        type: 'uint256',
       },
     ],
     name: 'trees',
     outputs: [
       {
-        internalType: 'string',
-        name: 'treeAddress',
-        type: 'string',
+        internalType: 'uint256',
+        name: 'treeID',
+        type: 'uint256',
       },
       {
         internalType: 'string',
@@ -1404,7 +1419,7 @@ const ABI = [
     type: 'function',
   },
 ];
-const Address = '0x98D240fE6bBA94e0cbcb06c89452e5A15675ce1E';
+const Address = '0xaDe3f05B38b438aAd4944c6ecd1D926b0B6d5610';
 
 const firstAccessToMetamask = async () => {
   if (window.ethereum !== 'undefined') {
@@ -1465,10 +1480,10 @@ const getOwner = async () => {
 };
 
 // Create user when connect to smart contract (Subsequent users)
-const createUser = async () => {
+const createUser = async (username) => {
   if (window.ethereum !== 'undefined') {
     const result = await window.contract.methods
-      .createUser(createUserP)
+      .createUser(username)
       .send({ from: account });
   }
 };
@@ -1676,21 +1691,60 @@ const addTreeToFarm = async () => {
 
 // Create Durian
 const createDurian = async () => {
-  const durianType = document.getElementById('durianType').value;
-  const farmAddress = document.getElementById('farmAddress').value;
-  const treeAddress = document.getElementById('treeAddress').value;
-  const harvestDate = document.getElementById('harvestDate').value;
-  const harvestTime = document.getElementById('harvestTime').value;
+  const durianType = document.getElementById('createDurianType').value;
+  const farmAddress = document.getElementById('createDurianFarmAddress').value;
+  const treeAddress = document.getElementById('createDurianTreeAddress').value;
+  const harvestDate = document.getElementById('createDurianHarvestDate').value;
+  const harvestTime = document.getElementById('createDurianHarvestTime').value;
+
+  // Create a new Date object from the date input string
+  const dateObject = new Date(harvestDate);
+
+  // Split the time input into hours, minutes, and seconds
+  const [hours, minutes] = harvestTime.split(':');
+
+  // Set the hours, minutes, and seconds on the date object
+  dateObject.setHours(hours);
+  dateObject.setMinutes(minutes);
+
+  const harvestDateTime = Math.floor(Date.parse(dateObject) / 1000);
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .createDurian(
-        durianType,
-        farmAddress,
-        treeAddress,
-        harvestDate,
-        harvestTime,
+      .createDurian(farmAddress, durianType, treeAddress, harvestDateTime)
+      .send({ from: account });
+    console.log(result);
+  }
+};
+
+// updateDatePassToDistributionCenter
+const updateDatePassToDistributionCenter = async () => {
+  const durianID = document.getElementById('updateDateDurianID').value;
+  const distributionCenterSelector = document.getElementById(
+    'updateDurianDistributionCenterAddress',
+  );
+  var distributionCenterAddress =
+    distributionCenterSelector.options[distributionCenterSelector.selectedIndex]
+      .value;
+  const datePassToDistributionCenter = document.getElementById(
+    'updateDurianDatePassToDistributionCenter',
+  ).value;
+
+  // Create a new Date object from the date input string
+  const dateObject = new Date(datePassToDistributionCenter);
+
+  const datePassToDistributionCenterTime = Math.floor(
+    Date.parse(dateObject) / 1000,
+  );
+
+  if (window.ethereum !== 'undefined') {
+    console.log(window.contract.methods);
+    const result = await window.contract.methods
+      .updateDatePassToDistributionCenter(
+        durianID,
+        datePassToDistributionCenterTime,
+        distributionCenterAddress,
       )
       .send({ from: account });
     console.log(result);
@@ -1753,22 +1807,21 @@ const addDistributorToDistributionCenter = async () => {
 
 // Update durian info for distribution center
 const updateDurianInfoForDistributor = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const distributionCenterAddress = document.getElementById(
-    'distributionCenterAddress',
+  const durianAddress = document.getElementById(
+    'updateDurianDurianAddress',
   ).value;
   const dateReceivedFromFarm = document.getElementById(
-    'dateReceivedFromFarm',
+    'updateDurianDateReceivedFromFarm',
   ).value;
+
+  // Change date format to unix
+  const dateObject = new Date(dateReceivedFromFarm);
+  const dateReceivedFromFarmTime = Math.floor(Date.parse(dateObject) / 1000);
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .updateDurianInfoForDistributor(
-        durianAddress,
-        distributionCenterAddress,
-        dateReceivedFromFarm,
-      )
+      .updateDurianInfoForDistributor(durianAddress, dateReceivedFromFarmTime)
       .send({ from: account });
     console.log(result);
   }
@@ -1776,14 +1829,31 @@ const updateDurianInfoForDistributor = async () => {
 
 // Update date pass to retailer
 const updateDatePassToRetailer = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const datePassToRetailer =
-    document.getElementById('datePassToRetailer').value;
+  const durianAddress = document.getElementById(
+    'updateDurianToRetailerDurianAddress',
+  ).value;
+  const retailerAddressSelector = document.getElementById(
+    'updateDurianRetailerAddress',
+  );
+  const retailerAddress =
+    retailerAddressSelector.options[retailerAddressSelector.selectedIndex]
+      .value;
+  const datePassToRetailer = document.getElementById(
+    'updateDurianDatePassToRetailer',
+  ).value;
+
+  // Change date format to unix
+  const dateObject = new Date(datePassToRetailer);
+  const datePassToRetailerTime = Math.floor(Date.parse(dateObject) / 1000);
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .updateDatePassToRetailer(durianAddress, datePassToRetailer)
+      .updateDatePassToRetailer(
+        durianAddress,
+        datePassToRetailerTime,
+        retailerAddress,
+      )
       .send({ from: account });
     console.log(result);
   }
@@ -1792,22 +1862,36 @@ const updateDatePassToRetailer = async () => {
 /////////////////////////////////////////////////////////////
 // RETAILER
 /////////////////////////////////////////////////////////////
+// Get consumers
+const getConsumers = async () => {
+  if (window.ethereum !== 'undefined') {
+    const result = await window.contract.methods.getConsumers().call();
+    console.log(result);
+    return result;
+  }
+};
 
 // Update durian info for retailer
 const updateDurianInfoForRetailer = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const retailerAddress = document.getElementById('retailerAddress').value;
-  const dateReceivedFromDistributionCenter = document.getElementById(
-    'dateReceivedFromDistributionCenter',
+  const durianAddress = document.getElementById(
+    'updateDurianDurianAddress',
   ).value;
+  const dateReceivedFromDistributionCenter = document.getElementById(
+    'updateDurianDateReceivedFromDistributionCenter',
+  ).value;
+
+  // Change date format to unix
+  const dateObject = new Date(dateReceivedFromDistributionCenter);
+  const dateReceivedFromDistributionCenterTime = Math.floor(
+    Date.parse(dateObject) / 1000,
+  );
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
       .updateDurianInfoForRetailer(
         durianAddress,
-        retailerAddress,
-        dateReceivedFromDistributionCenter,
+        dateReceivedFromDistributionCenterTime,
       )
       .send({ from: account });
     console.log(result);
@@ -1839,14 +1923,28 @@ const updateRetailerInfo = async () => {
 
 // Update date pass to consumer
 const updateDatePassToConsumer = async () => {
-  const durianAddress = document.getElementById('durianAddress').value;
-  const datePassToConsumer =
-    document.getElementById('datePassToConsumer').value;
+  const durianAddress = document.getElementById(
+    'updateDateDurianAddress',
+  ).value;
+  const consumerddress = document.getElementById(
+    'updateDateConsumerAddress',
+  ).value;
+  const datePassToConsumer = document.getElementById(
+    'updateDateDatePassToConsumer',
+  ).value;
+
+  // Change date format to unix
+  const dateObject = new Date(datePassToConsumer);
+  const datePassToConsumerTime = Math.floor(Date.parse(dateObject) / 1000);
 
   if (window.ethereum !== 'undefined') {
     console.log(window.contract.methods);
     const result = await window.contract.methods
-      .updateDatePassToConsumer(durianAddress, datePassToConsumer)
+      .updateDatePassToConsumer(
+        durianAddress,
+        datePassToConsumerTime,
+        consumerddress,
+      )
       .send({ from: account });
     console.log(result);
   }
@@ -1922,22 +2020,25 @@ function setDefaultDate() {
   // Get the current date in the format "YYYY-MM-DD"
   const today = new Date().toISOString().substring(0, 10);
   // Set the default value of the date input field to today's date
-  document.getElementById("createDurianHarvestDate").value = today;
-  document.getElementById("updateDurianDateReceivedFromDistributionCenter").value = today;
-  document.getElementById("updateDateDatePassToConsumer").value = today;
-  document.getElementById("updateDurianDateReceivedFromFarm").value = today;
-  document.getElementById("updateDurianDatePassToRetailer").value = today;
-  document.getElementById("dateReceivedFromRetailer").value = today;
-  document.getElementById("updateDurianDatePassToDistributionCenter").value = today;
+  document.getElementById('createDurianHarvestDate').value = today;
+  document.getElementById(
+    'updateDurianDateReceivedFromDistributionCenter',
+  ).value = today;
+  document.getElementById('updateDateDatePassToConsumer').value = today;
+  document.getElementById('updateDurianDateReceivedFromFarm').value = today;
+  document.getElementById('updateDurianDatePassToRetailer').value = today;
+  document.getElementById('dateReceivedFromRetailer').value = today;
+  document.getElementById('updateDurianDatePassToDistributionCenter').value =
+    today;
 }
 
 function setDefaultTime() {
   // Get the current time in the format "HH:MM"
   const now = new Date();
-  const hours = now.getHours().toString().padStart(2, "0");
-  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
   const currentTime = `${hours}:${minutes}`;
 
   // Set the default value of the time input field to the current time
-  document.getElementById("createDurianHarvestTime").value = currentTime;
+  document.getElementById('createDurianHarvestTime').value = currentTime;
 }

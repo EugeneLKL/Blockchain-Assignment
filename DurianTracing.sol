@@ -44,9 +44,8 @@ contract DurianTracing {
 
     struct DurianFarm {
         uint farmID;
-        address treeAddress;
-        int harvestDate;
-        int harvestTime;
+        uint treeID;
+        int harvestDateTime;
         int datePassToDistributionCenter;
         uint distributionCenterID;
     }
@@ -69,7 +68,7 @@ contract DurianTracing {
     }
 
     struct Tree {
-        string treeAddress;
+        uint treeID;
         string treeType;
         uint lastHarvestDate;
     }
@@ -91,7 +90,7 @@ contract DurianTracing {
         string farmLocation;
         uint farmOperatingYears;
         address[] farmers;
-        string[] trees;
+        uint[] trees;
         uint lastPassingDate;
     }
 
@@ -130,7 +129,7 @@ contract DurianTracing {
     mapping(address => uint) public distributors; // mapping(distributorAddress => distributionCenterID)
 
     uint public treesCount;
-    mapping(string => Tree) public trees; // mapping(treeId => tree)
+    mapping(uint => Tree) public trees; // mapping(treeId => tree)
 
     uint public duriansCount;
     mapping(uint => Durian) public durians; // mapping(durianAddress => durian)
@@ -367,15 +366,13 @@ contract DurianTracing {
     function createDurian(
         uint _farmID,
         string memory _type,
-        address _treeAddress,
-        int _harvestDate,
-        int _harvestTime
+        uint _treeID,
+        int _harvestDateTime
     ) external onlyFarmer {
         DurianFarm memory durianFarm = DurianFarm({
             farmID: _farmID,
-            treeAddress: _treeAddress,
-            harvestDate: _harvestDate,
-            harvestTime: _harvestTime,
+            treeID: _treeID,
+            harvestDateTime: _harvestDateTime,
             datePassToDistributionCenter: 0,
             distributionCenterID: 0
         });
@@ -529,7 +526,7 @@ contract DurianTracing {
             farmLocation: _location,
             farmOperatingYears: _operatingYears,
             farmers: new address[](0),
-            trees: new string[](0),
+            trees: new uint[](0),
             lastPassingDate: 0
         });
 
@@ -606,10 +603,10 @@ contract DurianTracing {
     // Add tree to farm
     function addTreeToFarm(
         uint _farmID,
-        string memory _treeID
+        uint _treeID
     ) external onlyFarmer {
         Tree memory tree = Tree({
-            treeAddress: _treeID,
+            treeID: _treeID,
             treeType: "Durian",
             lastHarvestDate: 0
         });
@@ -770,4 +767,13 @@ contract DurianTracing {
     //         consumer.consumerLocation
     //     );
     // }
+
+    // Get consumers
+    function getConsumers() external view returns (Consumer[] memory) {
+        Consumer[] memory consumer = new Consumer[](consumerAddresses.length);
+        for (uint i = 0; i < consumerAddresses.length; i++) {
+        	consumer[i] = consumers[consumerAddresses[i]];
+        }
+        return (consumer);
+    }
 }

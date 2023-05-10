@@ -1,9 +1,11 @@
 <!--This is the Home page for Project Dayak-->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"
+    ></script>
     <script src="js/allFunction.js"></script>
 
     <meta charset="UTF-8" />
@@ -14,210 +16,351 @@
     <link rel="stylesheet" href="/css/animated_header.css" />
     <link rel="stylesheet" href="/css/navigation.css" />
     <link rel="stylesheet" href="/css/main.css" />
-</head>
-<!--A Background Image for Body-->
+  </head>
+  <!--A Background Image for Body-->
 
-<body style="background-image: url(images/BGIMG.jpg)">
+  <body style="background-image: url(images/BGIMG.jpg)">
     <header>
-        <div class="shell">
-            <!--Title-->
-            <div class="navi">
-                <div class="logo">
-                    <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
-                </div>
-                <div class="title">
-                    <h1>Durian Tracker Application</h1>
-                </div>
-                <!--Header text-->
-                <div class="titletext">
-                    <h1>
-                        Tracing Durian through
-                        <span style="color: turquoise">Blockchain</span>
-                    </h1>
-                    <h2>Secure and transparent tracking of data and transactions</h2>
-                </div>
-            </div>
+      <div class="shell">
+        <!--Title-->
+        <div class="navi">
+          <div class="logo">
+            <img src="images/durian_Main.png" alt="Durian Logo" height="100" />
+          </div>
+          <div class="title">
+            <h1>Durian Tracker Application</h1>
+          </div>
+          <!--Header text-->
+          <div class="titletext">
+            <h1>
+              Tracing Durian through
+              <span style="color: turquoise">Blockchain</span>
+            </h1>
+            <h2>Secure and transparent tracking of data and transactions</h2>
+          </div>
         </div>
+      </div>
     </header>
     <main>
-        <div class="container">
-            <div class="index_box">
-                <br />
+      <div class="container">
+        <div class="index_box">
+          <br />
 
-                <h1>Consumer</h1>
-                <div class="container">
-                    <div style="margin-top: 15px" class="mini_box">
-                        <h2><u>Update Durian for Consumer</u></h2>
-                        <br />
-                        <table>
-                            <tr>
-                                <td>Durian Address:</td>
-                                <td class="tableInput">
-                                    <input type="text" id="UpdateDurianDurianAddress" placeholder="Enter Durian Address"
-                                        class="inputBox" size="44" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Date Received From Retailer:</td>
-                                <td class="tableInput">
-                                    <input type="date" id="dateReceivedFromRetailer"
-                                        placeholder="Enter Date Received From Retailer" class="inputBox" />
-                                </td>
-                            </tr>
-                        </table>
-                        <br />
-                        <button onclick="updateDurianInfoForConsumer(); snackbar();" class="button">
-                            Update Durian
-                        </button>
-                    </div>
-                    <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
-                        <h2><u>Rate Durian</u></h2>
-                        <br />
-
-                        <table>
-                            <tr>
-                                <td>Durian Address:</td>
-                                <td class="tableInput">
-                                    <input type="text" id="RateDurianAddress" placeholder="Enter Durian Address"
-                                        size="44" class="inputBox" />
-                                </td>
-                            </tr>
-                        </table>
-
-                        <br />
-
-                        <label for="ratingTaste">Rate Taste:</label>
-                        <div class="ratingTaste">
-                            <input type="radio" id="ratingTaste1" name="rating" value="0" />
-                            <label for="ratingTaste1">1</label>
-
-                            <input type="radio" id="ratingTaste2" name="rating" value="1" />
-                            <label for="ratingTaste2">2</label>
-
-                            <input type="radio" id="ratingTaste3" name="rating" value="2" />
-                            <label for="ratingTaste3">3</label>
-
-                            <input type="radio" id="ratingTaste4" name="rating" value="3" />
-                            <label for="ratingTaste4">4</label>
-
-                            <input type="radio" id="ratingTaste5" name="rating" value="4" />
-                            <label for="ratingTaste5">5</label>
-                        </div>
-                        <br />
-                        <label for="ratingFragrance">Rate Fragrance:</label>
-                        <div class="ratingFragrance">
-                            <input type="radio" id="ratingFragrance1" name="rating" value="0" />
-                            <label for="ratingFragrance1">1</label>
-
-                            <input type="radio" id="ratingFragrance2" name="rating" value="1" />
-                            <label for="ratingFragrance2">2</label>
-
-                            <input type="radio" id="ratingFragrance3" name="rating" value="2" />
-                            <label for="ratingFragrance3">3</label>
-
-                            <input type="radio" id="ratingFragrance4" name="rating" value="3" />
-                            <label for="ratingFragrance4">4</label>
-
-                            <input type="radio" id="ratingFragrance5" name="rating" value="4" />
-                            <label for="ratingFragrance5">5</label>
-                        </div>
-                        <br />
-                        <label for="ratingTexture">Rate Texture:</label>
-                        <div class="ratingTexture">
-                            <input type="radio" id="ratingTexture1" name="rating" value="0" />
-                            <label for="ratingTexture1">1</label>
-
-                            <input type="radio" id="ratingTexture2" name="rating" value="1" />
-                            <label for="ratingTexture2">2</label>
-
-                            <input type="radio" id="ratingTexture3" name="rating" value="2" />
-                            <label for="ratingTexture3">3</label>
-
-                            <input type="radio" id="ratingTexture4" name="rating" value="3" />
-                            <label for="ratingTexture4">4</label>
-
-                            <input type="radio" id="ratingTexture5" name="rating" value="4" />
-                            <label for="ratingTexture5">5</label>
-                        </div>
-                        <br />
-                        <label for="ratingCreaminess">Rate Creaminess:</label>
-                        <div class="ratingCreaminess">
-                            <input type="radio" id="ratingCreaminess1" name="rating" value="0" />
-                            <label for="ratingCreaminess1">1</label>
-
-                            <input type="radio" id="ratingCreaminess2" name="rating" value="1" />
-                            <label for="ratingCreaminess2">2</label>
-
-                            <input type="radio" id="ratingCreaminess3" name="rating" value="2" />
-                            <label for="ratingCreaminess3">3</label>
-
-                            <input type="radio" id="ratingCreaminess4" name="rating" value="3" />
-                            <label for="ratingCreaminess4">4</label>
-
-                            <input type="radio" id="ratingCreaminess5" name="rating" value="4" />
-                            <label for="ratingCreaminess5">5</label>
-                        </div>
-                        <br />
-                        <label for="ratingRipeness">Rate Ripeness:</label>
-                        <div class="ratingRipeness">
-                            <input type="radio" id="ratingRipeness1" name="rating" value="0" />
-                            <label for="ratingRipeness1">1</label>
-
-                            <input type="radio" id="ratingRipeness2" name="rating" value="1" />
-                            <label for="ratingRipeness2">2</label>
-
-                            <input type="radio" id="ratingRipeness3" name="rating" value="2" />
-                            <label for="ratingRipeness3">3</label>
-
-                            <input type="radio" id="ratingRipeness4" name="rating" value="3" />
-                            <label for="ratingRipeness4">4</label>
-
-                            <input type="radio" id="ratingRipeness5" name="rating" value="4" />
-                            <label for="ratingRipeness5">5</label>
-                        </div>
-                        <br />
-
-                        <table style="margin-bottom: 10px">
-                            <tr>
-                                <td>Durian Grade:</td>
-                                <td class="tableInput">
-                                    <input type="text" id="gradeRating" placeholder="Enter Durian Grade Rating"
-                                        size="44" class="inputBox" />
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr>
-                                <td>Comment:</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <textarea style="resize: none; padding: 5px" id="comment" cols="80" rows="10"
-                                        placeholder="Provide a comment if any"></textarea>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <br />
-                        <button onclick="updateDurianRating(); snackbar();" class="button">
-                            Rate Durian
-                        </button>
-                    </div>
-                </div>
-                <button class="disconnectButton" onclick="disconnect()">
-                    Log Out
-                </button>
+          <h1>Consumer</h1>
+          <div class="container">
+            <div style="margin-top: 15px" class="mini_box">
+              <h2><u>Update Durian for Consumer</u></h2>
+              <br />
+              <table>
+                <tr>
+                  <td>Durian Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="UpdateDurianDurianAddress"
+                      placeholder="Enter Durian Address"
+                      class="inputBox"
+                      size="44"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date Received From Retailer:</td>
+                  <td class="tableInput">
+                    <input
+                      type="date"
+                      id="dateReceivedFromRetailer"
+                      placeholder="Enter Date Received From Retailer"
+                      class="inputBox"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <br />
+              <button
+                onclick="updateDurianInfoForConsumer(); snackbar();"
+                class="button"
+              >
+                Update Durian
+              </button>
             </div>
-            <div id="snackbar">Changes made successfully</div>
+            <div style="margin-top: 15px; margin-bottom: 15px" class="mini_box">
+              <h2><u>Rate Durian</u></h2>
+              <br />
+
+              <table>
+                <tr>
+                  <td>Durian Address:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="RateDurianAddress"
+                      placeholder="Enter Durian Address"
+                      size="44"
+                      class="inputBox"
+                    />
+                  </td>
+                </tr>
+              </table>
+
+              <br />
+
+              <label for="ratingTaste">Rate Taste:</label>
+              <div class="ratingTaste">
+                <input type="radio" id="ratingTaste1" name="rating" value="0" />
+                <label for="ratingTaste1">1</label>
+
+                <input type="radio" id="ratingTaste2" name="rating" value="1" />
+                <label for="ratingTaste2">2</label>
+
+                <input type="radio" id="ratingTaste3" name="rating" value="2" />
+                <label for="ratingTaste3">3</label>
+
+                <input type="radio" id="ratingTaste4" name="rating" value="3" />
+                <label for="ratingTaste4">4</label>
+
+                <input type="radio" id="ratingTaste5" name="rating" value="4" />
+                <label for="ratingTaste5">5</label>
+              </div>
+              <br />
+              <label for="ratingFragrance">Rate Fragrance:</label>
+              <div class="ratingFragrance">
+                <input
+                  type="radio"
+                  id="ratingFragrance1"
+                  name="rating"
+                  value="0"
+                />
+                <label for="ratingFragrance1">1</label>
+
+                <input
+                  type="radio"
+                  id="ratingFragrance2"
+                  name="rating"
+                  value="1"
+                />
+                <label for="ratingFragrance2">2</label>
+
+                <input
+                  type="radio"
+                  id="ratingFragrance3"
+                  name="rating"
+                  value="2"
+                />
+                <label for="ratingFragrance3">3</label>
+
+                <input
+                  type="radio"
+                  id="ratingFragrance4"
+                  name="rating"
+                  value="3"
+                />
+                <label for="ratingFragrance4">4</label>
+
+                <input
+                  type="radio"
+                  id="ratingFragrance5"
+                  name="rating"
+                  value="4"
+                />
+                <label for="ratingFragrance5">5</label>
+              </div>
+              <br />
+              <label for="ratingTexture">Rate Texture:</label>
+              <div class="ratingTexture">
+                <input
+                  type="radio"
+                  id="ratingTexture1"
+                  name="rating"
+                  value="0"
+                />
+                <label for="ratingTexture1">1</label>
+
+                <input
+                  type="radio"
+                  id="ratingTexture2"
+                  name="rating"
+                  value="1"
+                />
+                <label for="ratingTexture2">2</label>
+
+                <input
+                  type="radio"
+                  id="ratingTexture3"
+                  name="rating"
+                  value="2"
+                />
+                <label for="ratingTexture3">3</label>
+
+                <input
+                  type="radio"
+                  id="ratingTexture4"
+                  name="rating"
+                  value="3"
+                />
+                <label for="ratingTexture4">4</label>
+
+                <input
+                  type="radio"
+                  id="ratingTexture5"
+                  name="rating"
+                  value="4"
+                />
+                <label for="ratingTexture5">5</label>
+              </div>
+              <br />
+              <label for="ratingCreaminess">Rate Creaminess:</label>
+              <div class="ratingCreaminess">
+                <input
+                  type="radio"
+                  id="ratingCreaminess1"
+                  name="rating"
+                  value="0"
+                />
+                <label for="ratingCreaminess1">1</label>
+
+                <input
+                  type="radio"
+                  id="ratingCreaminess2"
+                  name="rating"
+                  value="1"
+                />
+                <label for="ratingCreaminess2">2</label>
+
+                <input
+                  type="radio"
+                  id="ratingCreaminess3"
+                  name="rating"
+                  value="2"
+                />
+                <label for="ratingCreaminess3">3</label>
+
+                <input
+                  type="radio"
+                  id="ratingCreaminess4"
+                  name="rating"
+                  value="3"
+                />
+                <label for="ratingCreaminess4">4</label>
+
+                <input
+                  type="radio"
+                  id="ratingCreaminess5"
+                  name="rating"
+                  value="4"
+                />
+                <label for="ratingCreaminess5">5</label>
+              </div>
+              <br />
+              <label for="ratingRipeness">Rate Ripeness:</label>
+              <div class="ratingRipeness">
+                <input
+                  type="radio"
+                  id="ratingRipeness1"
+                  name="rating"
+                  value="0"
+                />
+                <label for="ratingRipeness1">1</label>
+
+                <input
+                  type="radio"
+                  id="ratingRipeness2"
+                  name="rating"
+                  value="1"
+                />
+                <label for="ratingRipeness2">2</label>
+
+                <input
+                  type="radio"
+                  id="ratingRipeness3"
+                  name="rating"
+                  value="2"
+                />
+                <label for="ratingRipeness3">3</label>
+
+                <input
+                  type="radio"
+                  id="ratingRipeness4"
+                  name="rating"
+                  value="3"
+                />
+                <label for="ratingRipeness4">4</label>
+
+                <input
+                  type="radio"
+                  id="ratingRipeness5"
+                  name="rating"
+                  value="4"
+                />
+                <label for="ratingRipeness5">5</label>
+              </div>
+              <br />
+
+              <table style="margin-bottom: 10px">
+                <tr>
+                  <td>Durian Grade:</td>
+                  <td class="tableInput">
+                    <input
+                      type="text"
+                      id="gradeRating"
+                      placeholder="Enter Durian Grade Rating"
+                      size="44"
+                      class="inputBox"
+                    />
+                  </td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td>Comment:</td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea
+                      style="resize: none; padding: 5px"
+                      id="comment"
+                      cols="80"
+                      rows="10"
+                      placeholder="Provide a comment if any"
+                    ></textarea>
+                  </td>
+                </tr>
+              </table>
+
+              <br />
+              <button
+                onclick="updateDurianRating(); snackbar();"
+                class="button"
+              >
+                Rate Durian
+              </button>
+            </div>
+          </div>
+          <button class="disconnectButton" onclick="disconnect()">
+            Log Out
+          </button>
         </div>
+        <div id="snackbar">Changes made successfully</div>
+      </div>
     </main>
-</body>
+  </body>
 
-<script>
+  <script>
     window.addEventListener('load', async () => {
-        await accessToMetamask();
-        await accessToContract();
+      await accessToMetamask();
+      await accessToContract();
     });
-</script>
-
+  </script>
+  <script>
+    // Call the setDefaultDate function when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      setDefaultDate();
+    });
+  </script>
+  <script>
+    // Call the setDefaultDate function when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      setDefaultTime();
+    });
+  </script>
 </html>
