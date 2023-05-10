@@ -349,22 +349,151 @@
               </button>
             </div>
           </div>
-          <div class="container">
+          <div class="mini_box">
             <table>
               <tr>
                 <td>Durian ID:</td>
                 <td>
-                  <select id="selectDurianID" class="inputBox"></select>
+                  <select id="durianID" class="inputBox"></select>
                 </td>
               </tr>
             </table>
             <br />
-            <button
-              onclick="getDurianInfoForConsumer(); snackbar();"
-              class="button"
-            >
+            <button onclick="durianInfoHandler()" class="button">
               Get Durian Info
             </button>
+            <div style="margin-top: 15px">
+              <table class="infoTable">
+                <tr>
+                  <td>Durian ID:</td>
+                  <td>
+                    <span id="tableDurianID"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Durian type:</td>
+                  <td>
+                    <div><span id="durianType"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Farm ID:</td>
+                  <td>
+                    <div><span id="farmID"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tree ID:</td>
+                  <td>
+                    <div><span id="treeID"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Harvest date and time:</td>
+                  <td>
+                    <div><span id="harvestDateTime"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date pass to distribution center:</td>
+                  <td>
+                    <div><span id="datePassToDistributionCenter"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Distribution center ID:</td>
+                  <td>
+                    <div><span id="distributionCenterID"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date received from farm:</td>
+                  <td>
+                    <div><span id="dateReceivedFromFarm"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date pass to retailer:</td>
+                  <td>
+                    <div><span id="datePassToRetailer"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Retailer address:</td>
+                  <td>
+                    <div><span id="retailerAddress"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date received from distribution center:</td>
+                  <td>
+                    <div>
+                      <span id="dateReceivedFromDistributionCenter"></span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date pass to consumer:</td>
+                  <td>
+                    <div><span id="datePassToConsumer"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Consumer address:</td>
+                  <td>
+                    <div><span id="consumerAddress"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Date received from retailer:</td>
+                  <td>
+                    <div><span id="tableDateReceivedFromRetailer"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Taste:</td>
+                  <td>
+                    <div><span id="taste"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Fragrance:</td>
+                  <td>
+                    <div><span id="fragrance"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Texture:</td>
+                  <td>
+                    <div><span id="texture"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Creaminess:</td>
+                  <td>
+                    <div><span id="creaminess"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ripeness:</td>
+                  <td>
+                    <div><span id="ripeness"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Grade:</td>
+                  <td>
+                    <div><span id="grade"></span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Comment:</td>
+                  <td>
+                    <div><span id="tableComment"></span></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
           <button class="disconnectButton" onclick="disconnect()">
             Log Out
@@ -394,7 +523,7 @@
           const option = document.createElement('option');
           option.value = durian.durianID;
           option.innerHTML = durian.durianID;
-          document.getElementById('selectDurianID').appendChild(option);
+          document.getElementById('durianID').appendChild(option);
           document
             .getElementById('RateDurianAddress')
             .appendChild(option.cloneNode(true));
@@ -404,6 +533,278 @@
         }
       });
     });
+
+    async function durianInfoHandler() {
+      const durian = await getDurianInfoForConsumer();
+      console.log(durian);
+
+      // durian.durianID
+      const durianID = durian.durianID;
+      console.log(durianID);
+      if (durian.durianID == 0) {
+        document.getElementById('tableDurianID').innerHTML = '-';
+      } else {
+        document.getElementById('tableDurianID').innerHTML = durian.durianID;
+      }
+
+      // durian.durianType
+      const durianType = durian.durianType;
+      if (durian.durianType == '') {
+        document.getElementById('durianType').innerHTML = '-';
+      } else {
+        document.getElementById('durianType').innerHTML = durian.durianType;
+      }
+
+      // durian.durianFarm.farmID
+      const farmID = durian.durianFarm.farmID;
+      if (durian.durianFarm.farmID == 0) {
+        document.getElementById('farmID').innerHTML = '-';
+      } else {
+        document.getElementById('farmID').innerHTML = durian.durianFarm.farmID;
+      }
+
+      // durian.durianFarm.treeID
+      const treeID = durian.durianFarm.treeID;
+      if (durian.durianFarm.treeID == 0) {
+        document.getElementById('treeID').innerHTML = '-';
+      } else {
+        document.getElementById('treeID').innerHTML = durian.durianFarm.treeID;
+      }
+
+      // durian.durianFarm.harvestDateTime
+      const harvestDateTime = durian.durianFarm.harvestDateTime;
+
+      // Change to html date time format
+      const harvestDate = new Date(harvestDateTime * 1000);
+      const htmlHarvestDateTime = harvestDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ');
+
+      if (durian.durianFarm.harvestDateTime == 0) {
+        document.getElementById('harvestDateTime').innerHTML = '-';
+      } else {
+        document.getElementById('harvestDateTime').innerHTML =
+          htmlHarvestDateTime;
+      }
+
+      // durian.durianFarm.datePassToDistributionCenter
+      const datePassToDistributionCenter =
+        durian.durianFarm.datePassToDistributionCenter;
+
+      // Change to html date time format
+      const passToDistributionCenterDate = new Date(
+        datePassToDistributionCenter * 1000,
+      );
+      const htmlPassToDistributionCenterDate = passToDistributionCenterDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ')
+        .slice(0, 10);
+
+      if (durian.durianFarm.datePassToDistributionCenter == 0) {
+        document.getElementById('datePassToDistributionCenter').innerHTML = '-';
+      } else {
+        document.getElementById('datePassToDistributionCenter').innerHTML =
+          htmlPassToDistributionCenterDate;
+      }
+
+      // durian.durianFarm.distributionCenterID
+      const distributionCenterID = durian.durianFarm.distributionCenterID;
+      if (durian.durianFarm.distributionCenterID == 0) {
+        document.getElementById('distributionCenterID').innerHTML = '-';
+      } else {
+        document.getElementById('distributionCenterID').innerHTML =
+          durian.durianFarm.distributionCenterID;
+      }
+
+      // durian.durianDistributionCenter.dateReceivedFromFarm
+      const dateReceivedFromFarm =
+        durian.durianDistributionCenter.dateReceivedFromFarm;
+
+      // Change to html date time format
+      const receivedFromFarmDate = new Date(dateReceivedFromFarm * 1000);
+      const htmlReceivedFromFarmDate = receivedFromFarmDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ')
+        .slice(0, 10);
+
+      if (durian.durianDistributionCenter.dateReceivedFromFarm == 0) {
+        document.getElementById('dateReceivedFromFarm').innerHTML = '-';
+      } else {
+        document.getElementById('dateReceivedFromFarm').innerHTML =
+          htmlReceivedFromFarmDate;
+      }
+
+      // durian.durianDistributionCenter.datePassToRetailer
+      const datePassToRetailer =
+        durian.durianDistributionCenter.datePassToRetailer;
+
+      // Change to html date time format
+      const passToRetailerDate = new Date(datePassToRetailer * 1000);
+      const htmlPassToRetailerDate = passToRetailerDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ')
+        .slice(0, 10);
+
+      if (durian.durianDistributionCenter.datePassToRetailer == 0) {
+        document.getElementById('datePassToRetailer').innerHTML = '-';
+      } else {
+        document.getElementById('datePassToRetailer').innerHTML =
+          htmlPassToRetailerDate;
+      }
+
+      // durian.durianDistributionCenter.retailerAddress
+      const retailerAddress = durian.durianDistributionCenter.retailerAddress;
+      if (
+        durian.durianDistributionCenter.retailerAddress ==
+        0x0000000000000000000000000000000000000000
+      ) {
+        document.getElementById('retailerAddress').innerHTML = '-';
+      } else {
+        document.getElementById('retailerAddress').innerHTML =
+          durian.durianDistributionCenter.retailerAddress;
+      }
+
+      // durian.durianRetailer.dateReceivedFromDistributionCenter
+      const dateReceivedFromDistributionCenter =
+        durian.durianRetailer.dateReceivedFromDistributionCenter;
+
+      // Change to html date time format
+      const receivedFromDistributionCenterDate = new Date(
+        dateReceivedFromDistributionCenter * 1000,
+      );
+      const htmlReceivedFromDistributionCenterDate =
+        receivedFromDistributionCenterDate
+          .toISOString()
+          .slice(0, 16)
+          .replace('T', ' ')
+          .slice(0, 10);
+
+      if (durian.durianRetailer.dateReceivedFromDistributionCenter == 0) {
+        document.getElementById(
+          'dateReceivedFromDistributionCenter',
+        ).innerHTML = '-';
+      } else {
+        document.getElementById(
+          'dateReceivedFromDistributionCenter',
+        ).innerHTML = htmlReceivedFromDistributionCenterDate;
+      }
+
+      // durian.durianRetailer.datePassToConsumer
+      const datePassToConsumer = durian.durianRetailer.datePassToConsumer;
+
+      // Change to html date time format
+      const passToConsumerDate = new Date(datePassToConsumer * 1000);
+      const htmlPassToConsumerDate = passToConsumerDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ')
+        .slice(0, 10);
+
+      if (durian.durianRetailer.datePassToConsumer == 0) {
+        document.getElementById('datePassToConsumer').innerHTML = '-';
+      } else {
+        document.getElementById('datePassToConsumer').innerHTML =
+          htmlPassToConsumerDate;
+      }
+
+      // durian.durianRetailer.consumerAddress
+      const consumerAddress = durian.durianRetailer.consumerAddress;
+      if (
+        durian.durianRetailer.consumerAddress ==
+        0x0000000000000000000000000000000000000000
+      ) {
+        document.getElementById('consumerAddress').innerHTML = '-';
+      } else {
+        document.getElementById('consumerAddress').innerHTML =
+          durian.durianRetailer.consumerAddress;
+      }
+
+      // durian.durianConsumer.dateReceivedFromRetailer
+      const dateReceivedFromRetailer =
+        durian.durianConsumer.dateReceivedFromRetailer;
+
+      // Change to html date time format
+      const receivedFromRetailerDate = new Date(
+        dateReceivedFromRetailer * 1000,
+      );
+      const htmlReceivedFromRetailerDate = receivedFromRetailerDate
+        .toISOString()
+        .slice(0, 16)
+        .replace('T', ' ')
+        .slice(0, 10);
+
+      if (durian.durianConsumer.dateReceivedFromRetailer == 0) {
+        document.getElementById('tableDateReceivedFromRetailer').innerHTML =
+          '-';
+      } else {
+        document.getElementById('tableDateReceivedFromRetailer').innerHTML =
+          htmlReceivedFromRetailerDate;
+      }
+
+      // durian.durianConsumer.rating.taste
+      const taste = durian.durianConsumer.rating.taste;
+      if (durian.durianConsumer.rating.taste == 'Undefined') {
+        document.getElementById('taste').innerHTML = '-';
+      } else {
+        document.getElementById('taste').innerHTML =
+          durian.durianConsumer.rating.taste;
+      }
+
+      // durian.durianConsumer.rating.fragrance
+      const fragrance = durian.durianConsumer.rating.fragrance;
+      if (durian.durianConsumer.rating.fragrance == 'Undefined') {
+        document.getElementById('fragrance').innerHTML = '-';
+      } else {
+        document.getElementById('fragrance').innerHTML =
+          durian.durianConsumer.rating.fragrance;
+      }
+
+      // durian.durianConsumer.rating.texture
+      const texture = durian.durianConsumer.rating.texture;
+      if (durian.durianConsumer.rating.texture == 'Undefined') {
+        document.getElementById('texture').innerHTML = '-';
+      } else {
+        document.getElementById('texture').innerHTML =
+          durian.durianConsumer.rating.texture;
+      }
+
+      // durian.durianConsumer.rating.creaminess
+      const creaminess = durian.durianConsumer.rating.creaminess;
+      if (durian.durianConsumer.rating.creaminess == 'Undefined') {
+        document.getElementById('creaminess').innerHTML = '-';
+      } else {
+        document.getElementById('creaminess').innerHTML =
+          durian.durianConsumer.rating.creaminess;
+      }
+
+      // durian.durianConsumer.rating.ripeness
+      const ripeness = durian.durianConsumer.rating.ripeness;
+      if (durian.durianConsumer.rating.ripeness == 'Undefined') {
+        document.getElementById('ripeness').innerHTML = '-';
+      } else {
+        document.getElementById('ripeness').innerHTML = ripeness;
+      }
+
+      // durian.durianConsumer.rating.grade
+      const grade = durian.durianConsumer.rating.grade;
+      if (durian.durianConsumer.rating.grade == undefined) {
+        document.getElementById('grade').innerHTML = '-';
+      } else {
+        document.getElementById('grade').innerHTML = grade;
+      }
+
+      // durian.durianConsumer.rating.comment
+      const comment = durian.durianConsumer.rating.comment;
+      if (comment == '') {
+        document.getElementById('tableComment').innerHTML = '-';
+      } else {
+        document.getElementById('tableComment').innerHTML = comment;
+      }
+    }
   </script>
   <script>
     // Call the setDefaultDate function when the DOM content is loaded

@@ -308,6 +308,7 @@ contract DurianTracing {
 
     // Get user role
     function getUserRole(address _userAddress) external view returns (Roles) {
+        if (admins[_userAddress]) return Roles.Admin; 
         return users[_userAddress].userRole;
     }
 

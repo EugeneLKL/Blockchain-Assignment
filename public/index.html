@@ -119,6 +119,7 @@
 
       const currentUser = window.ethereum.selectedAddress;
       const currentUserRole = await getRole(currentUser);
+      console.log(currentUserRole);
       const isCurrentUserUser = await isUser(currentUser);
       console.log(await getOwner());
 
@@ -127,7 +128,8 @@
       } else if (!isCurrentUserUser) {
         document.getElementById('createUserTable').style.display = 'block';
       } else if (
-        currentUser.toLowerCase() == (await getOwner()).toLowerCase()
+        currentUser.toLowerCase() == (await getOwner()).toLowerCase() ||
+        currentUserRole == 'Owner'
       ) {
         window.location.href = 'admin.html';
       } else if (currentUserRole == 'Farmer') {
