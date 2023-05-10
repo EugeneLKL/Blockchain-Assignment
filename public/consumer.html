@@ -92,7 +92,11 @@
               </table>
 
               <br />
-
+              <div>
+                Rating Scale &nbsp; 1 - Inedible &nbsp; 2 - Bad &nbsp; 3 -
+                Average &nbsp; 4 - Good &nbsp; 5 - Excellent
+              </div>
+              <br />
               <label for="ratingTaste">Rate Taste:</label>
               <div class="ratingTaste">
                 <input
@@ -749,44 +753,80 @@
       const taste = durian.durianConsumer.rating.taste;
       if (durian.durianConsumer.rating.taste == 'Undefined') {
         document.getElementById('taste').innerHTML = '-';
-      } else {
-        document.getElementById('taste').innerHTML =
-          durian.durianConsumer.rating.taste;
+      } else if (durian.durianConsumer.rating.taste == 0) {
+        document.getElementById('taste').innerHTML = 'Inedible';
+      } else if (durian.durianConsumer.rating.taste == 1) {
+        document.getElementById('taste').innerHTML = 'Bad';
+      } else if (durian.durianConsumer.rating.taste == 2) {
+        document.getElementById('taste').innerHTML = 'Average';
+      } else if (durian.durianConsumer.rating.taste == 3) {
+        document.getElementById('taste').innerHTML = 'Good';
+      } else if (durian.durianConsumer.rating.taste == 4) {
+        document.getElementById('taste').innerHTML = 'Excellent';
       }
 
       // durian.durianConsumer.rating.fragrance
       const fragrance = durian.durianConsumer.rating.fragrance;
-      if (durian.durianConsumer.rating.fragrance == 'Undefined') {
-        document.getElementById('fragrance').innerHTML = '-';
-      } else {
-        document.getElementById('fragrance').innerHTML =
-          durian.durianConsumer.rating.fragrance;
+      if (durian.durianConsumer.rating.taste == 'Undefined') {
+        document.getElementById('taste').innerHTML = '-';
+      } else if (durian.durianConsumer.rating.taste == 0) {
+        document.getElementById('taste').innerHTML = 'Inedible';
+      } else if (durian.durianConsumer.rating.taste == 1) {
+        document.getElementById('taste').innerHTML = 'Bad';
+      } else if (durian.durianConsumer.rating.taste == 2) {
+        document.getElementById('taste').innerHTML = 'Average';
+      } else if (durian.durianConsumer.rating.taste == 3) {
+        document.getElementById('taste').innerHTML = 'Good';
+      } else if (durian.durianConsumer.rating.taste == 4) {
+        document.getElementById('taste').innerHTML = 'Excellent';
       }
 
       // durian.durianConsumer.rating.texture
       const texture = durian.durianConsumer.rating.texture;
-      if (durian.durianConsumer.rating.texture == 'Undefined') {
-        document.getElementById('texture').innerHTML = '-';
-      } else {
-        document.getElementById('texture').innerHTML =
-          durian.durianConsumer.rating.texture;
+      if (durian.durianConsumer.rating.taste == 'Undefined') {
+        document.getElementById('').innerHTML = '-';
+      } else if (durian.durianConsumer.rating.taste == 0) {
+        document.getElementById('taste').innerHTML = 'Inedible';
+      } else if (durian.durianConsumer.rating.taste == 1) {
+        document.getElementById('taste').innerHTML = 'Bad';
+      } else if (durian.durianConsumer.rating.taste == 2) {
+        document.getElementById('taste').innerHTML = 'Average';
+      } else if (durian.durianConsumer.rating.taste == 3) {
+        document.getElementById('taste').innerHTML = 'Good';
+      } else if (durian.durianConsumer.rating.taste == 4) {
+        document.getElementById('taste').innerHTML = 'Excellent';
       }
 
       // durian.durianConsumer.rating.creaminess
       const creaminess = durian.durianConsumer.rating.creaminess;
-      if (durian.durianConsumer.rating.creaminess == 'Undefined') {
-        document.getElementById('creaminess').innerHTML = '-';
-      } else {
-        document.getElementById('creaminess').innerHTML =
-          durian.durianConsumer.rating.creaminess;
+      if (durian.durianConsumer.rating.taste == 'Undefined') {
+        document.getElementById('taste').innerHTML = '-';
+      } else if (durian.durianConsumer.rating.taste == 0) {
+        document.getElementById('taste').innerHTML = 'Inedible';
+      } else if (durian.durianConsumer.rating.taste == 1) {
+        document.getElementById('taste').innerHTML = 'Bad';
+      } else if (durian.durianConsumer.rating.taste == 2) {
+        document.getElementById('taste').innerHTML = 'Average';
+      } else if (durian.durianConsumer.rating.taste == 3) {
+        document.getElementById('taste').innerHTML = 'Good';
+      } else if (durian.durianConsumer.rating.taste == 4) {
+        document.getElementById('taste').innerHTML = 'Excellent';
       }
 
       // durian.durianConsumer.rating.ripeness
       const ripeness = durian.durianConsumer.rating.ripeness;
-      if (durian.durianConsumer.rating.ripeness == 'Undefined') {
-        document.getElementById('ripeness').innerHTML = '-';
-      } else {
-        document.getElementById('ripeness').innerHTML = ripeness;
+      if (durian.durianConsumer.rating.taste == 'Undefined') {
+        document.getElementById('taste').innerHTML = '-';
+      } else if (durian.durianConsumer.rating.taste == 0) {
+        document.getElementById('taste').innerHTML = 'Inedible';
+      } else if (durian.durianConsumer.rating.taste == 1) {
+        document.getElementById('taste').innerHTML = 'Bad';
+      } else if (durian.durianConsumer.rating.taste == 2) {
+        document.getElementById('taste').innerHTML = 'Average';
+      } else if (durian.durianConsumer.rating.taste == 3) {
+        document.getElementById('taste').innerHTML = 'Good';
+      } else if (durian.durianConsumer.rating.taste == 4) {
+        document.getElementById('taste').innerHTML = 'Excellent';
       }
 
       // durian.durianConsumer.rating.grade
