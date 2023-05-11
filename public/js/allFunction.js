@@ -2049,7 +2049,6 @@ const updateDurianRating = async () => {
   const durianAddressSelector = document.getElementById('RateDurianAddress');
   const durianID =
     durianAddressSelector.options[durianAddressSelector.selectedIndex].value;
-  console.log(durianID);
 
   const tasteSelector = document.getElementsByName('ratingTaste');
   let taste;
